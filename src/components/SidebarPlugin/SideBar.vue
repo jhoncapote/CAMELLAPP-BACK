@@ -4,7 +4,7 @@
       <div class="logo">
         <a href="#" class="simple-text logo__container">
           <div class="logo-img">
-            <img src="" alt="">
+            <img src="https://i.ibb.co/ZWhrt5Y/logocamellapp-Recuperado.png" alt="" style="max-width: 4rem;">
           </div>
           {{ title }}
         </a>
@@ -37,7 +37,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: 'CAMELLAP'
+      default: 'CAMELLAPP'
     },
     backgroundColor: {
       type: String,

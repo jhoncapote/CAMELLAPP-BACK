@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="container-fluid">
-            <h2>experiencia</h2>
+            <h2>Experiencia</h2>
             <div v-for="experiencia in ListarExperiencia" class="d-flex justify-content-center">
                 <b-card no-body class="my-4 overflow-hidden" style="max-width: 1540px;">
                     <b-row no-gutters>

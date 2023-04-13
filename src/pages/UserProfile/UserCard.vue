@@ -1,4 +1,5 @@
 <template>
+  <div class="col-6 offset-3">
   <card class="card-user"  id="card1">
     <img slot="image" src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400"
       alt="..."  />
@@ -17,6 +18,7 @@
       <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
     </div>
   </card>
+</div>
 </template>
 <script>
 import Card from 'src/components/Cards/Card.vue'

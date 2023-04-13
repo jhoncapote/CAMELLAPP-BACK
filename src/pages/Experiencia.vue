@@ -1,14 +1,9 @@
 <template>
     <div class="container sm">
-        <div class="container-fluid">
-
-
+        <div class="container-fluid"><br>
         <b-card>
             <div class="row">
-                <br> <br>
-                
-                        <!-- Styled -->
-                        <b-form-file placeholder="elija el archivo que desea subir"></b-form-file><br><br>
+                        <b-form-file class=" mx-3" placeholder="elija el archivo que desea subir"></b-form-file><br><br>
                     <div class="col-12">
                         <base-input  label="Titulo" v-model="Exp.titulo" class="from_control" placeholder="titulo"></base-input>
                     </div>
@@ -37,12 +32,14 @@
                     </div>
                 
                 <br>
-
+<div class="mx-2">
                 <b-button v-on:click="publicarExperiencia()" href="#" variant="primary" class="m-1"><b-icon
                         icon="check2"></b-icon>Agregar
                     experiencia</b-button>
                 <b-button href="#" variant="danger" class="m-1"><b-icon icon="x-circle"></b-icon>
-                    Cancelar</b-button>
+                    Cancelar</b-button>    
+</div>
+
             </div>
         </b-card>
       </div>

@@ -4,7 +4,7 @@
        
             <div class="row">
                 
-                    <h2>CAMELLAPP</h2>
+                    <h2 class="m-2">CAMELLAPP</h2>
                     <div class="col">
                         <div>
                             <b-input-group><template #append>
@@ -34,13 +34,13 @@
                 <div v-if="show === 'DetalleOferta'">
                     <DetalleOferta />
                 </div>
-                <div class="row d-flex justify-content-between" v-else-if="show === 'Ofertas'">
+                <div class="row" v-else-if="show === 'Ofertas'">
                     <!--start card-->
                     <div v-for="ofertaEmpleo in listaOfertaEmpleo" :key="ofertaEmpleo.id_ofertaEmpleo" class="d-flex w-50">
-                        <router-link class="btn border border-0"  :to="{ name: 'DetalleOferta', params: { id: ofertaEmpleo.id_ofertaEmpleo } }">
+                        <router-link class="btn border border-0 m-5"  :to="{ name: 'DetalleOferta', params: { id: ofertaEmpleo.id_ofertaEmpleo } }">
                             <div :title="ofertaEmpleo.titulo" img-alt="Image" img-top tag="article"
-                                style="max-width: 25rem;" class="card btn btn-light">
-                                <b-card-text class="d-flex">{{ ofertaEmpleo.id_ofertaEmpleo }}.
+                                style="max-width: 25rem;" class="card ">
+                                <b-card-text class="d-flex m-2">{{ ofertaEmpleo.id_ofertaEmpleo }}.
                                     {{ ofertaEmpleo.titulo }}</b-card-text>
                                 <img src="https://www.semana.com/resizer/JmiB52VJxZmk799j7D2CEeTZ1x4=/arc-anglerfish-arc2-prod-semana/public/R52D6MSO7ZB4DF3W4QM4LECYIA.jpg"
                                     alt="">
@@ -50,7 +50,7 @@
                                 <b-card-text>Pago: {{ ofertaEmpleo.salario }}</b-card-text>
                                 <b-button href="#" variant="info" class="m-1">Aplicar a esta oferta</b-button>
                                 <b-button variant="info" class="m-1"><b-icon icon="pencil"></b-icon> Editar</b-button>
-                                <h1>{{ ofertaEmpleo.id }}</h1>
+
                                 <!-- <router-link class="btn" :to="{path:`detalleOferta${ofertaEmpleo.id_ofertaEmpleo}`}">ver</router-link> --><b-button
                                     href="#" variant="danger" class="m-1"><b-icon icon="trash"></b-icon>
                                 </b-button>

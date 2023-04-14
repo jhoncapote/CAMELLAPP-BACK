@@ -7,7 +7,7 @@
         <p>Dashboard</p>
       </sidebar-link>
       <sidebar-link to="/admin/user">
-        <i class="nc-icon nc-circle"></i>
+        <i class="nc-icon nc-circle-09"></i>
         <p>Editar Perfil</p>
       </sidebar-link>
       <sidebar-link to="/admin/OfertasEmpleo">
@@ -15,7 +15,7 @@
         <p>Ofertas De Empleo</p>
       </sidebar-link>
       <sidebar-link to="/admin/ListaUsuarios">
-        <i class="nc-icon nc-circle-09"></i>
+        <i class="nc-icon nc-notes"></i>
         <p>Usuarios</p>
       </sidebar-link>
       <sidebar-link to="/admin/PublicarOferta">
@@ -81,7 +81,7 @@ export default {
     TopNavbar,
     ContentFooter,
     DashboardContent,
-    MobileMenu
+  MobileMenu
   },
   methods: {
     toggleSidebar() {

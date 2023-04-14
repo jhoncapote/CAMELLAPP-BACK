@@ -37,8 +37,7 @@
             class="btn btn-light m-5"
             >
             {{usuario.nacionalidad}}<br>
-            <b-card-text><p>{{usuario.telefono}}</p></b-card-text>
-            <b-card-text><p>Disponible:{{usuario.disponibilidad}}</p></b-card-text>
+            <p>{{usuario.direccion}}</p>
             <b-button href="#" variant="outline-primary" class="m-1">Contratar</b-button>            <b-button href="#" variant="danger" @click="eliminarpostulante(listar.id)" class="m-1">Eliminar</b-button>
             </b-card><br>
             </div>

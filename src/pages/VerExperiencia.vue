@@ -8,7 +8,7 @@
                         <b-col md="7">
                             <b-card-body class="my-4">
                                 <b-card-title
-                                    class="d-flex">{{ experiencia.id_experiencia }}.{{ experiencia.titulo }}</b-card-title>
+                                    class="d-flex">{{ experiencia.id_experiencia }}.  {{ experiencia.titulo }}</b-card-title><br>
                                 <b-card-sub-title class="d-flex">{{ experiencia.lugarDeTrabajo }}</b-card-sub-title><br>
                                 <p class="d-flex">Descripcion: {{ experiencia.descripcion }}</p>
                                 <p class="d-flex">Experiencia: {{ experiencia.experienciaDeTrabajo }}</p>
@@ -23,6 +23,13 @@
                 </b-card>
             </div>
         </div>
+            <router-link :to="{path: '/admin/Experiencia'}" class="d-flex justify-content-center">
+       <b-card class="btn w-100">
+      <b-icon icon="plus-circle-dotted"></b-icon>
+      <b-card-text>Añadir experiencia</b-card-text></b-card>                 
+            </router-link>
+           
+
     </div>
 </template>
 <script>

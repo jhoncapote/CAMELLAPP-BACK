@@ -18,7 +18,8 @@
       <b-img rounded src="https://www.semana.com/resizer/JmiB52VJxZmk799j7D2CEeTZ1x4=/arc-anglerfish-arc2-prod-semana/public/R52D6MSO7ZB4DF3W4QM4LECYIA.jpg" class="w-100"></b-img>
       <img img-left class="w-100" alt="">
     </div>
-  </div><hr>
+  </div>
+  <hr>
   <h4 class="my-4">Experiencia</h4>
         <div v-for="experiencia in listarExperiencia" >
             <b-card img-src="https://www.semana.com/resizer/JmiB52VJxZmk799j7D2CEeTZ1x4=/arc-anglerfish-arc2-prod-semana/public/R52D6MSO7ZB4DF3W4QM4LECYIA.jpg" img-alt="Card image" img-left img-width="33%">

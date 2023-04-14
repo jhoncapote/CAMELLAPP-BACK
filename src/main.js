@@ -20,6 +20,8 @@ import App from "./App.vue";
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
+import 'core-js';
+
 // LightBootstrap plugin
 import LightBootstrap from "./light-bootstrap-main";
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'

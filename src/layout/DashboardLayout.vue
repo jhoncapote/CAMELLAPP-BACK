@@ -7,12 +7,16 @@
         <p>Dashboard</p>
       </sidebar-link>
       <sidebar-link to="/admin/user">
-        <i class="nc-icon nc-circle-09"></i>
+        <i class="nc-icon nc-circle"></i>
         <p>Editar Perfil</p>
       </sidebar-link>
       <sidebar-link to="/admin/OfertasEmpleo">
         <i class="nc-icon nc-grid-45"></i>
         <p>Ofertas De Empleo</p>
+      </sidebar-link>
+      <sidebar-link to="/admin/ListaUsuarios">
+        <i class="nc-icon nc-circle-09"></i>
+        <p>Usuarios</p>
       </sidebar-link>
       <sidebar-link to="/admin/PublicarOferta">
         <i class="nc-icon nc-tap-01"></i>
@@ -24,7 +28,7 @@
       </sidebar-link>
       <sidebar-link to="/admin/Experiencia">
         <i class="nc-icon nc-tap-01"></i>
-        <p>Publicar Experiencia</p>
+        <p>Añadir Experiencia</p>
       </sidebar-link>
       <sidebar-link to="/admin/VerExperiencia">
         <i class="nc-icon nc-tap-01"></i>

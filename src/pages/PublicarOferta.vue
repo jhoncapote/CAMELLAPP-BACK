@@ -2,21 +2,24 @@
     <div class="container-fluid">
         
             <div class="row">
-                <b-card>
-                    <template #header>
-                        <b-card-img  src="" img-top class="w-20"></b-card-img>
+                <b-card>                    <template #header>
+                    <div class="d-flex justify-content-center">
                         <img src="https://www.semana.com/resizer/JmiB52VJxZmk799j7D2CEeTZ1x4=/arc-anglerfish-arc2-prod-semana/public/R52D6MSO7ZB4DF3W4QM4LECYIA.jpg"
-                            rounded img-top alt="" class="w-50"><br><br>
+                         alt="" class="w-50 d-flex justify-content-center"
+                        >
+                    </div>
+                        
+                        <br><br>
                         <div class="row d-flex">
                             <div class="col-11">
-                                <base-input type="text" label="Categoria" placeholder="elija una categoria" v-model="ofertaEmpleo.categoria"></base-input>
+                                <base-input type="text" label="Categoria" placeholder="Seleccione una categoria" v-model="ofertaEmpleo.categoria"></base-input>
                                 
                             </div>
                         </div>
                         <br>
                         <div class="row d-flex">
                             <div class="col-11">
-                                <base-input type="text" label="Titulo" placeholder="elija una titulo" v-model="ofertaEmpleo.titulo"></base-input>
+                                <base-input type="text" label="Titulo" placeholder="Escriba un titulo" v-model="ofertaEmpleo.titulo"></base-input>
                             </div>
                         </div>
                         <br>
@@ -36,7 +39,7 @@
                         <br>
                         <div class="row d-flex">
                             <div class="col-11">
-                                <base-input type="text" label="ubicacion" placeholder="digite la ubicacion" v-model="ofertaEmpleo.ubicacion"></base-input>
+                                <base-input type="text" label="ubicacion" placeholder="Escriba su ubicacion" v-model="ofertaEmpleo.ubicacion"></base-input>
                             </div>
                         </div>
                         <br>

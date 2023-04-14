@@ -3,8 +3,8 @@
     <div class="sidebar-wrapper">
       <div class="logo">
         <a href="#" class="simple-text logo__container">
-          <div class="logo-img">
-            <img src="https://i.ibb.co/ZWhrt5Y/logocamellapp-Recuperado.png" alt="" style="max-width: 4rem;">
+          <div>
+    <b-avatar class="mr-2" size="4rem" src="https://i.ibb.co/ngxW7m4/Imagen1.png"></b-avatar>
           </div>
           {{ title }}
         </a>

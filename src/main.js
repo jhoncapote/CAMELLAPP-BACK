@@ -19,7 +19,7 @@ import App from "./App.vue";
 
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-
+import Vuelidate from 'vuelidate';
 // LightBootstrap plugin
 import LightBootstrap from "./light-bootstrap-main";
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
@@ -36,6 +36,7 @@ Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(LightBootstrap);
 Vue.use(VueAxios, axios)
+Vue.use(Vuelidate);
 // configure router
 const router = new VueRouter({
   routes, // short for routes: routes

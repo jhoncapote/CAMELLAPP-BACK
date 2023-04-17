@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Dashboard</a>
+      <a class="navbar-brand" href="#">CAMELLAPP</a>
       <button type="button" class="navbar-toggler navbar-toggler-right" :class="{ toggled: $sidebar.showSidebar }"
         aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation" @click="toggleSidebar">
         <span class="navbar-toggler-bar burger-lines"></span>

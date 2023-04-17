@@ -18,7 +18,7 @@
       </sidebar-link>
       <sidebar-link to="/admin/Experiencia">
         <i class="nc-icon nc-tap-01"></i>
-        <p>Publicar Experiencia</p>
+        <p>Añadir Experiencia</p>
       </sidebar-link>
       <sidebar-link to="/admin/VerExperiencia">
         <i class="nc-icon nc-tap-01"></i>
@@ -79,7 +79,7 @@ export default {
     TopNavbar,
     ContentFooter,
     DashboardContent,
-    MobileMenu
+  MobileMenu
   },
   mounted(){
     this.usuariologueado=localStorage.getItem('usuario')

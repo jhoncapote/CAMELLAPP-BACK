@@ -1,13 +1,13 @@
 <template>
   <div class="col-6 offset-3">
   <card class="card-user"  id="card1">
-    <img slot="image" src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400"
+    <img slot="image" src="https://i.ibb.co/ZWhrt5Y/logocamellapp-Recuperado.png" style="max-width: 90%;"
       alt="..."  />
     <div class="author">
       <a href="#">
-        <img class="avatar border-gray" src="img/faces/face-3.jpg" alt="..." />
-
-        <h4 class="title">Nombre<br />
+        <img class="avatar border-0" src="https://st3.depositphotos.com/6582994/13117/v/450/depositphotos_131177892-stock-illustration-user-icon-in-trendy-flat.jpg"
+          alt="..." />
+        <h4 class="title">Nombre<br/>
           <small>usuario</small>
         </h4>
       </a>

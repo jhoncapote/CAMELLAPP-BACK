@@ -8,6 +8,8 @@ import Maps from 'src/pages/Maps.vue'
 import Notifications from 'src/pages/Notifications.vue'
 import PublicarOferta from 'src/pages/PublicarOferta.vue'
 import OfertasEmpleo from 'src/pages/OfertasEmpleo.vue'
+import ListaUsuarios from 'src/pages/ListaUsuarios.vue'
+import DetalleUsuario from 'src/pages/DetalleUsuario'
 import DetalleOferta from 'src/pages/DetalleOferta.vue'
 import Experiencia from 'src/pages/Experiencia.vue'
 import VerExperiencia from 'src/pages/VerExperiencia.vue'
@@ -56,9 +58,19 @@ const routes = [
         component: OfertasEmpleo
       },
       {
+        path: 'ListaUsuarios',
+        name: 'ListaUsuarios',
+        component: ListaUsuarios
+      },
+      {
         path: 'DetalleOferta',
         name: 'DetalleOferta',
         component: DetalleOferta
+      },
+      {
+        path: 'DetalleUsuario',
+        name: 'DetalleUsuario',
+        component: DetalleUsuario
       },
       {
         path: 'Experiencia',

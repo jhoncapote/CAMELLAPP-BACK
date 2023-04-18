@@ -67,12 +67,12 @@ export default {
     Card
   },
   async mounted(){
-    await this.listarDatos()
+    await this.listarDatos();
 
   },
 
   methods:{
-
+    
     listarDatos(){
       axios.get("http://localhost:3000/verUsuario/"+1)
       .then((res) => {

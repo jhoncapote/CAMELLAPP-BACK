@@ -8,7 +8,7 @@
       </sidebar-link>
       <sidebar-link to="/admin/user">
         <i class="nc-icon nc-circle-09"></i>
-        <p>Editar Perfil</p>
+        <p>Perfil</p>
       </sidebar-link>
       <sidebar-link to="/admin/OfertasEmpleo">
         <i class="nc-icon nc-grid-45"></i>

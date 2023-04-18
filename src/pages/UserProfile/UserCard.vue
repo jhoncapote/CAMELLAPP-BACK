@@ -7,8 +7,8 @@
       <a href="#">
         <img class="avatar border-0" src="https://st3.depositphotos.com/6582994/13117/v/450/depositphotos_131177892-stock-illustration-user-icon-in-trendy-flat.jpg"
           alt="..." />
-        <h4 class="title">Nombre<br/>
-          <small>usuario</small>
+        <h4 class="title" style="text-transform: uppercase;">{{usuario.nombres}} {{usuario.apellidos}}<br/>
+          <small>{{usuario.correo}}</small>
         </h4>
       </a>
     </div>
@@ -22,13 +22,16 @@
 </template>
 <script>
 import Card from 'src/components/Cards/Card.vue'
+import axios from 'axios'
 export default {
   data() {
     return {
-    
+    usuario:{}
     }
   },
-
+  async mounted(){
+    await this.listarDatos()
+  },
   components: {
     Card
   },
@@ -42,7 +45,18 @@ export default {
       } else {
         return 'col-md-3'
       }
-    }
+    },
+    listarDatos(){
+      axios.get("http://localhost:3000/verUsuario/"+1)
+      .then((respuesta) => {
+       this.usuario = respuesta.data  
+      })
+      .catch((err) => {
+        alert("error del servidor")
+      })
+      .finally(()=>{
+      })
+    },
   }
 }
 

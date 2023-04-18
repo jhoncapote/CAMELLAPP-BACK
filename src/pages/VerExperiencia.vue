@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <h2>Experiencia</h2>
             <div v-for="experiencia in ListarExperiencia" class="d-flex justify-content-center">
-                <b-card no-body class="my-4 overflow-hidden" style="max-width: 1540px;">
+                <b-card no-body class="my-4 overflow-hidden" style="max-width: 100%; ">
                     <b-row no-gutters>
                         <b-col md="7">
                             <b-card-body class="my-4">
@@ -17,7 +17,7 @@
                         <b-col md="5">
                             <b-card-img
                                 src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/JYRA6SJJXNCSNIWPTRXDJW2ABI.jpg"
-                                alt="Image" class="rounded-0"></b-card-img>
+                                alt="Image" class="rounded-0" style="height: 100%;"></b-card-img>
                         </b-col>
                     </b-row>
                 </b-card>

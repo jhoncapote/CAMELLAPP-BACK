@@ -48,7 +48,6 @@
 import Card from 'src/components/Cards/Card.vue'
 import axios from 'axios'
 export default {
-  
   data() {
     return {
       user: {
@@ -67,14 +66,13 @@ export default {
     Card
   },
   async mounted(){
-    await this.listarDatos();
+    await this.listarDatos()
 
   },
-
   methods:{
-    
+
     listarDatos(){
-      axios.get("http://localhost:3000/verUsuario/"+1)
+      axios.get("http://localhost:3000/verUsuario/"+4)
       .then((res) => {
         // console.log(respuesta.data);
        this.user.nombres = res.data.nombres;
@@ -88,10 +86,11 @@ export default {
       })
       .catch((err) => {//500
         alert("error del servidor")
+
       })
     },
     editar(){
-      axios.put("http://localhost:3000/editarusuario/"+1)
+      axios.put("http://localhost:3000/editarusuario/"+4)
       .then(res => {
        console.log(res.data)
       })

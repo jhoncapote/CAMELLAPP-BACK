@@ -5,14 +5,13 @@
       
       <sidebar-link to="/admin/user">
         <i class="nc-icon nc-circle-09"></i>
-        <p>Editar Perfil</p>
+        <p>Perfil</p>
       </sidebar-link>
       <sidebar-link to="/admin/OfertasEmpleo">
         <i class="nc-icon nc-grid-45"></i>
         <p>Ofertas De Empleo</p>
       </sidebar-link>
       <sidebar-link
-      v-if="usuariologueado "
       to="/admin/PublicarOferta">
         <i class="nc-icon nc-tap-01"></i>
         <p>Publicar Oferta</p>

@@ -51,26 +51,37 @@ export default {
     data() {
         return {
             ofertaEmpleo: {
-                titulo: "",
-                salario: "",
-                descripcion: "",
-                ubicacion: "",
-                tipoDeContrato: "",
-                id_categoria: 1,
-                id_usuario: 1
-            }
+                titulo: null,
+                salario: null,
+                descripcion: null,
+                ubicacion: null,
+                tipoDeContrato: null,
+                id_categoria: null,
+                id_usuario: 1,
+            },
+            num: null,
+            selected: null,
         };
     },
+
     methods: {
         publicarOferta() {
-            //   user = localStorage.getItem("usuario")
-            //   user.id
-            axios.post("http://localhost:3000/guardarOfertaEmpleo", this.ofertaEmpleo)
-                .then((data) => {
-                    console.log(data);
+            // Asignar el valor seleccionado al campo id_categoria en ofertaEmpleo
+            this.ofertaEmpleo.id_categoria = this.selected;
+            // Realizar una solicitud POST a la API con los datos del formulario
+            axios
+                .post("http://localhost:3000/guardarOfertaEmpleo", this.ofertaEmpleo)
+                .then((response) => {
+                    // Manejar la respuesta de la API si es necesario
+                    console.log(response.data);
+                    console.log('Oferta Publicada Exitosamente!!!')
+                    // Otros pasos a seguir después de enviar la oferta
+                })
+                .catch(error => {
+                    // Manejar errores si es necesario
+                    console.error(error);
                 });
-
-        }
+        },
     },
 };
 </script>

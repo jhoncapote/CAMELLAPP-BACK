@@ -67,8 +67,10 @@ export default {
   },
   async mounted(){
     await this.listarDatos()
+
   },
   methods:{
+
     listarDatos(){
       axios.get("http://localhost:3000/verUsuario/"+4)
       .then((res) => {

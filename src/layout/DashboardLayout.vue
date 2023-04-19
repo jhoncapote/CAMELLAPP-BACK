@@ -2,6 +2,7 @@
   <div class="wrapper">
     <side-bar>
       <mobile-menu slot="content"></mobile-menu>
+      
       <sidebar-link to="/admin/user">
         <i class="nc-icon nc-circle-09"></i>
         <p>Editar Perfil</p>
@@ -28,9 +29,9 @@
         <i class="nc-icon nc-atom"></i>
         <p>Icons</p>
       </sidebar-link>
-      <sidebar-link to="/admin/maps">
+      <sidebar-link to="/admin/EditarOferta">
         <i class="nc-icon nc-pin-3"></i>
-        <p>Maps</p>
+        <p>editar oferta</p>
       </sidebar-link>
       
       <sidebar-link to="/admin/LoginView">

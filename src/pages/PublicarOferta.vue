@@ -1,7 +1,5 @@
 <template >
     <div class="container-fluid">
-
-
         <b-card>
             <template #header>
                 <div class="col-10 d-flex justify-content-center">

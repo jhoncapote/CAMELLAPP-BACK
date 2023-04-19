@@ -8,7 +8,7 @@
                 <h2>Detalles</h2><br>
                 <div class="row">
                     <div class="col-8">
-                        <h3 class="d-flex align-items-baseline">{{ oferta.id_ofertaEmpleo }}.  {{oferta.titulo }}</h3>
+                        <h3 class="d-flex align-items-baseline"><h3>{{ oferta.id_ofertaEmpleo}}.</h3>{{oferta.titulo }}</h3>
                         <h6 class="d-flex align-items-baseline">{{ oferta.descripcion }}</h6>
                         <h6 class="d-flex align-items-baseline">Direccion: {{ oferta.ubicacion }}</h6>
                         <h6 class="d-flex align-items-baseline">Salario: ${{ oferta.salario }}</h6>

@@ -39,7 +39,7 @@
           <br>
         </template>
 
-        <b-button v-on:click="editar()" variant="primary" class="m-1 col-5"><b-icon
+        <b-button v-on:click="" variant="primary" class="m-1 col-5"><b-icon
             icon="check2"></b-icon>Actualizar</b-button>
         <b-button href="#" variant="danger" class="m-1 col-5"><b-icon icon="x-circle"></b-icon> Cancelar</b-button>
       </b-card>
@@ -52,8 +52,8 @@ export default {
   name: 'EditarOferta',
   data() {
     return {
-
       ofertas: {
+        id_categoria:"1",
         titulo: "",
         descripcion: "",
         salario: "",
@@ -65,12 +65,13 @@ export default {
   components: {
   },
   async mounted() {
-    await this.verDatos()
+    // this.id_ofertaEmpleo = $route.params.id
+    await this.datos()
   },
 
   methods: {
-    verDatos() {
-      axios.get("http://localhost:3000/ofertaEmpleo/" + 1)
+    datos() {
+      axios.get("http://localhost:3000/ofertaEmpleo/"+2 )
         .then((res) => {
           console.log(res.data);
           this.ofertas.titulo = res.data.titulo;
@@ -85,12 +86,12 @@ export default {
         })
     },
 
-    editar() {
-      axios.put("http://localhost:3000/editarOfertaEmpleo/" + 1)
-        .then(res => {
-          console.log(res.data)
-        })
-    }
+    // editar() {
+    //   axios.put("http://localhost:3000/editarOfertaEmpleo/" + id_ofertaEmpleo)
+    //     .then(res => {
+    //       console.log(res.data)
+    //     })
+    // }
   }
 
 }

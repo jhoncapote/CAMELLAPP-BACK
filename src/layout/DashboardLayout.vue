@@ -32,7 +32,10 @@
         <i class="nc-icon nc-pin-3"></i>
         <p>editar oferta</p>
       </sidebar-link>
-      
+      <sidebar-link to="/admin/EditarExperiencia">
+        <i class="nc-icon nc-bell-55"></i>
+        <p>Editar Experiencia</p>
+      </sidebar-link>
       <sidebar-link to="/admin/LoginView">
         <i class="nc-icon nc-bell-55"></i>
         <p>login</p>

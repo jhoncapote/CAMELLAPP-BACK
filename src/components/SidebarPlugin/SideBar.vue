@@ -4,7 +4,7 @@
       <div class="logo">
         <a href="#" class="simple-text logo__container">
           <div>
-    <b-avatar class="mr-2" size="4rem" src="https://i.ibb.co/ngxW7m4/Imagen1.png"></b-avatar>
+            <b-avatar class="mr-2" size="4rem" src="https://i.ibb.co/ngxW7m4/Imagen1.png"></b-avatar>
           </div>
           {{ title }}
         </a>
@@ -14,8 +14,8 @@
       <ul class="nav nav-main__links">
         <!--By default vue-router adds an active class to each route link. This way the links are colored when clicked-->
         <slot>
-          <sidebar-link v-for="(link, index) in sidebarLinks" :key="link.name + index" :to="link.path" @click="closeNavbar"
-            :link="link">
+          <sidebar-link v-for="(link, index) in sidebarLinks" :key="link.name + index" :to="link.path"
+            @click="closeNavbar" :link="link">
             <i :class="link.icon"></i>
             <p>{{ link.name }}</p>
           </sidebar-link>

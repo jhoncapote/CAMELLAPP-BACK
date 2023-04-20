@@ -16,6 +16,7 @@ import VerExperiencia from 'src/pages/VerExperiencia.vue'
 import Registro from 'src/pages/Login/Registro.vue'
 import LoginView from 'src/pages/Login/LoginView.vue'
 import EditarOferta from 'src/pages/EditarOferta.vue'
+import EditarExperiencia from 'src/pages/EditarExperiencia.vue'
 import Upgrade from 'src/pages/Upgrade.vue'
 const routes = [
   {
@@ -94,9 +95,14 @@ const routes = [
         component: Registro
       },
       {
-        path: 'EditarOferta/:id',
+        path: 'EditarOferta',
         name: 'EditarOferta',
         component: EditarOferta
+      },
+      {
+        path: 'EditarExperiencia',
+        name: 'EditarExperiencia',
+        component: EditarExperiencia
       },
       {
         path: 'upgrade',

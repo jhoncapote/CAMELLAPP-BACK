@@ -7,9 +7,8 @@
       <a href="#">
         <img class="avatar border-0" src="https://st3.depositphotos.com/6582994/13117/v/450/depositphotos_131177892-stock-illustration-user-icon-in-trendy-flat.jpg"
           alt="..." />
-        <h4 class="title" style="text-transform: uppercase;">{{usuario.nombres}} {{usuario.apellidos}}<br/>
-          <small>{{usuario.correo}}</small>
-        </h4>
+        <h3 class="title" style="text-transform: uppercase;">{{usuariols.nombres}} {{usuariols.apellidos}}<br/></h3>
+        <h3>{{ usuariols.nacionalidad }}</h3>
       </a>
     </div>
     <div slot="footer" class="text-center d-flex justify-content-center">
@@ -26,8 +25,12 @@ import axios from 'axios'
 export default {
   data() {
     return {
-    usuario:{}
+    usuariols:{}
     }
+  },
+  created() {
+    this.usuariols = JSON.parse(localStorage.getItem('usuario'));
+    console.log(this.usuariols);
   },
   async mounted(){
     await this.listarDatos()

@@ -1,8 +1,7 @@
 <template>
-  <div class="container">
+  <div class="container-xxl">
     <div class="row">
-
-      <b-card>
+      <b-card class="">
         <template #header>
           <div class="col-10 d-flex justify-content-center">
             <img
@@ -10,7 +9,8 @@
               rounded img-top alt="" class="w-50"><br><br>
           </div>
           <div class="col-11">
-            <base-input type="text" label="Categoria" placeholder="elija una categoria"></base-input>
+            <base-input type="text" label="Categoria" placeholder="elija una categoria"
+              v-model="ofertas.id_categoria"></base-input>
           </div>
           <br>
           <div class="col-11">
@@ -38,9 +38,7 @@
           </div>
           <br>
         </template>
-
-        <b-button v-on:click="" variant="primary" class="m-1 col-5"><b-icon
-            icon="check2"></b-icon>Actualizar</b-button>
+        <b-button v-on:click="editar()" variant="primary" class="m-1 col-5"><b-icon icon="check2"></b-icon>Actualizar</b-button>
         <b-button href="#" variant="danger" class="m-1 col-5"><b-icon icon="x-circle"></b-icon> Cancelar</b-button>
       </b-card>
     </div>
@@ -48,50 +46,55 @@
 </template>
 <script>
 import axios from 'axios'
+
 export default {
   name: 'EditarOferta',
   data() {
     return {
+      usuariols: {},
       ofertas: {
-        id_categoria:"1",
+        id_ofertaEmpleo: null,
+        id_categoria: "",
         titulo: "",
         descripcion: "",
         salario: "",
         ubicacion: "",
-        tipoDeContrato: ""
+        tipoDeContrato: "",
+        id_usuario: null
       }
     }
   },
   components: {
   },
-  async mounted() {
-    // this.id_ofertaEmpleo = $route.params.id
-    await this.datos()
+  created() {
+    this.usuariols = JSON.parse(localStorage.getItem('usuario'));
+    console.log(this.usuariols);
   },
-
+  async mounted() {
+    this.ofertas.id_ofertaEmpleo = this.$route.params.id_ofertaEmpleo
+    await this.obtenerOfertaempleo()
+  },
   methods: {
-    datos() {
-      axios.get("http://localhost:3000/ofertaEmpleo/"+2 )
+    obtenerOfertaempleo() {
+      this.ofertas.id_usuario = this.usuariols.id_usuario
+      axios.get("http://localhost:3000/ofertaEmpleo/" + this.ofertas.id_ofertaEmpleo)
         .then((res) => {
-          console.log(res.data);
-          this.ofertas.titulo = res.data.titulo;
-          this.ofertas.descripcion = res.data.descripcion;
-          this.ofertas.salario = res.data.salario;
-          this.ofertas.ubicacion = res.data.ubicacion;
-          this.ofertas.tipoDeContrato = res.data.tipoDeContrato;
-
+          this.ofertas = res.data;
         })
         .catch((err) => {//500
           alert("error del servidor")
         })
     },
-
-    // editar() {
-    //   axios.put("http://localhost:3000/editarOfertaEmpleo/" + id_ofertaEmpleo)
-    //     .then(res => {
-    //       console.log(res.data)
-    //     })
-    // }
+    editar() {
+   
+      axios.put("http://localhost:3000/editarOfertaEmpleo/" + this.ofertas.id_ofertaEmpleo, this.ofertas)
+        .then(response => {
+          
+        })
+        .catch((err) => {
+          alert("problemas del servidor no se actualizo")
+        })
+    }
   }
 
 }

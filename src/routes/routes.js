@@ -3,20 +3,25 @@ import DashboardLayout from '../layout/DashboardLayout.vue'
 import NotFound from '../pages/NotFoundPage.vue'
 // Admin pages
 import UserProfile from 'src/pages/UserProfile.vue'
+// import DetallePerfil from 'src/pages/DetallePerfil.vue'
 import Icons from 'src/pages/Icons.vue'
 import Maps from 'src/pages/Maps.vue'
 import Notifications from 'src/pages/Notifications.vue'
-import PublicarOferta from 'src/pages/PublicarOferta.vue'
-import OfertasEmpleo from 'src/pages/OfertasEmpleo.vue'
+import PublicarOferta from 'src/pages/Empleador/PublicarOferta.vue'
+import OfertasEmpleo from 'src/pages/Empleador/OfertasEmpleo.vue'
 import ListaUsuarios from 'src/pages/ListaUsuarios.vue'
 import DetalleUsuario from 'src/pages/DetalleUsuario'
-import DetalleOferta from 'src/pages/DetalleOferta.vue'
-import Experiencia from 'src/pages/Experiencia.vue'
-import VerExperiencia from 'src/pages/VerExperiencia.vue'
+import DetalleOferta from 'src/pages/Empleador/DetalleOferta.vue'
+import Experiencia from 'src/pages/Postulante/Experiencia.vue'
+import VerExperiencia from 'src/pages/Postulante/VerExperiencia.vue'
 import Registro from 'src/pages/Login/Registro.vue'
 import LoginView from 'src/pages/Login/LoginView.vue'
-import EditarOferta from 'src/pages/EditarOferta.vue'
-import EditarExperiencia from 'src/pages/EditarExperiencia.vue'
+import EditarOferta from 'src/pages/Empleador/EditarOferta.vue'
+import EditarExperiencia from 'src/pages/Postulante/EditarExperiencia.vue'
+import VerOfertas from 'src/pages/Postulante/VerOfertas.vue'
+import VerDetalleOferta from 'src/pages/Postulante/VerDetalleOferta.vue'
+import DetalleExperiencia from 'src/pages/Postulante/DetalleExperiencia.vue'
+import Usuarios from 'src/pages/administrador/Usuarios.vue'
 import Upgrade from 'src/pages/Upgrade.vue'
 const routes = [
   {
@@ -30,10 +35,15 @@ const routes = [
     redirect: '/admin/OfertasEmpleo',
     children: [
       {
-        path: 'user',
+        path: 'user/:id_usuario',
         name: 'User',
         component: UserProfile
       },
+      // {
+      //   path: 'Detalleperfil/:id_usuario',
+      //   name: 'Detalleperfil',
+      //   component: DetallePerfil
+      // },
       {
         path: 'icons',
         name: 'Icons',
@@ -65,8 +75,8 @@ const routes = [
         component: ListaUsuarios
       },
       {
-        path: 'DetalleOferta',
-        name: 'DetalleOferta',
+        path: 'DetalleOfertas/:id_ofertaEmpleo',
+        name: 'DetalleOfertas',
         component: DetalleOferta
       },
       {
@@ -95,20 +105,42 @@ const routes = [
         component: Registro
       },
       {
-        path: 'EditarOferta',
+        path: 'EditarOferta/:id_ofertaEmpleo',
         name: 'EditarOferta',
         component: EditarOferta
       },
       {
-        path: 'EditarExperiencia',
-        name: 'EditarExperiencia',
+        path: 'EditarExperiencias/:id_experiencia',
+        name: 'EditarExperiencias',
         component: EditarExperiencia
+      },
+      {
+        path: 'VerOferta',
+        name: 'VerOferta',
+        component: VerOfertas
+      },
+      {
+        path: 'VerDetalleOfertas/:id_ofertaEmpleo',
+        name: 'VerDetalleOfertas',
+        component:VerDetalleOferta
+      },
+      {
+        path: 'Detalleexperiencia/:id_experiencia',
+        name: 'Detalleexperiencia',
+        component:DetalleExperiencia
+      },
+      {
+        path: 'usuarios',
+        name: 'usuarios',
+        component:Usuarios
       },
       {
         path: 'upgrade',
         name: 'Upgrade to PRO',
         component: Upgrade
       }
+
+
     ]
   },
   { path: '*', component: NotFound }

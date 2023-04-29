@@ -29,7 +29,7 @@
 
     <li class="nav-item">
       <a class="nav-link" href="#pablo">
-        <span class="no-icon">Log out</span>
+        <span class="no-icon">cerrar Sesion</span>
       </a>
     </li>
   </ul>

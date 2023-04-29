@@ -1,5 +1,6 @@
 <template>
   <card>
+
     <h4 slot="header" class="card-title">Editar Perfil</h4>
     <form>
       <div class="row">
@@ -12,13 +13,24 @@
           </base-input>
         </div>
       </div>
+
       <div class="row">
+        <div class="col-md-6">
+          <base-input type="text" label="Celular" placeholder="Celular" v-model="user.telefono">
+          </base-input>
+        </div>
         <div class="col-md-6">
           <base-input type="text" label="Nacionalidad" placeholder="Nacionalidad" v-model="user.nacionalidad">
           </base-input>
         </div>
-        <div class="col-md-6">
-          <base-input type="text" label="Celular" placeholder="Celular" v-model="user.telefono">
+      </div>
+      <div class="col-md-12">
+          <base-input type="text" label="Ciudad" placeholder="Numero de celular" v-model="user.ciudad">
+          </base-input>
+        </div>
+      <div class="row">
+        <div class="col-md-12">
+          <base-input type="date" label="fecha de Nacimiento" placeholder="fecha de nacimiento" v-model="user.fechaNacimiento">
           </base-input>
         </div>
       </div>
@@ -36,9 +48,7 @@
         </div>
       </div>
       <div class="text-center">
-        <button type="submit" class="btn btn-info btn-fill float-right" @click="editar()">
-          Actualizar
-        </button>
+        <button type="submit" class="btn btn-info btn-fill float-right" @click="editarPerfil()">Actualizar</button>
       </div>
       <div class="clearfix"></div>
     </form>
@@ -48,8 +58,11 @@
 import Card from 'src/components/Cards/Card.vue'
 import axios from 'axios'
 export default {
+  name:'User',
   data() {
     return {
+       usuariols: {},
+      id_usuario:null,
       user: {
         nombres: "",
         apellidos: "",
@@ -65,32 +78,28 @@ export default {
   components: {
     Card
   },
-  async mounted(){
+  created() {
+    this.usuariols = JSON.parse(localStorage.getItem('usuario'));
+    console.log(this.usuariols);
+  },
+  async mounted() {
+    this.id_usuario = this.$route.params.id_usuario
     await this.listarDatos()
-
   },
   methods:{
 
     listarDatos(){
-      axios.get("http://localhost:3000/verUsuario/"+4)
+      this.id_usuario = this.usuariols.id_usuario
+      axios.get("http://localhost:3000/verUsuario/"+ this.id_usuario )
       .then((res) => {
-        // console.log(respuesta.data);
-       this.user.nombres = res.data.nombres;
-       this.user.apellidos = res.data.apellidos;
-       this.user.nacionalidad = res.data.nacionalidad;
-       this.user.correo = res.data.correo;
-       this.user.documento = res.data.documento;
-       this.user.fotoPerfil = res.data.fotoPerfil;
-       this.user.telefono = res.data.telefono;
-       this.user.direccion = res.data.direccion;
+        this.user = res.data;
       })
       .catch((err) => {//500
         alert("error del servidor")
-
       })
     },
-    editar(){
-      axios.put("http://localhost:3000/editarusuario/"+4)
+    editarPerfil(){
+      axios.put("http://localhost:3000/editarusuario/"+ this.id_usuario,this.user)
       .then(res => {
        console.log(res.data)
       })

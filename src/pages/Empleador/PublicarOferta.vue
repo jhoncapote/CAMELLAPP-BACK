@@ -1,14 +1,30 @@
 <template >
-    <div class="container-fluid">
-        <b-card>
+    <div class="container-fluid ">
+        <h3>Publicar Oferta</h3>
+        <b-card class=" d-flex justify-content-center ">
             <template #header>
+
                 <div class="col-10 d-flex justify-content-center">
                     <img src="https://www.semana.com/resizer/JmiB52VJxZmk799j7D2CEeTZ1x4=/arc-anglerfish-arc2-prod-semana/public/R52D6MSO7ZB4DF3W4QM4LECYIA.jpg"
                         rounded img-top alt="" class="w-50"><br><br>
                 </div>
-                <div class="col-11">
-                    <base-input type="text" label="Categoria" placeholder="elija una categoria"
-                        v-model="ofertaEmpleo.categoria"></base-input>
+                <div class="row d-flex ">
+                    <div class="col-11">
+                        <label for="">Selecciona una categoria</label><br>
+                        <select class="btn w-100" v-model="selected">
+                            <option :value="1">Ayudante general</option>
+                            <option :value="2">Construcción</option>
+                            <option :value="3">Servicios de soldadura</option>
+                            <option :value="4">Plomería</option>
+                            <option :value="5">Servicio de instalación eléctrica</option>
+                            <option :value="6">Pintado de paredes y techos</option>
+                            <option :value="7">Arreglos y mantenimientos del Hogar</option>
+                            <option :value="8">Recogida de basura</option>
+                            <option :value="9">Servicios de Jardineria</option>
+                            <option :value="10">Diseño y presupuesto</option>
+                            <option :value="11">Otra</option>
+                        </select>
+                    </div>
                 </div>
                 <br>
                 <div class="col-11">
@@ -50,31 +66,39 @@ export default {
     name: "PublicarOferta",
     data() {
         return {
+            usuariols: {},
             ofertaEmpleo: {
-                titulo: null,
-                salario: null,
-                descripcion: null,
-                ubicacion: null,
-                tipoDeContrato: null,
-                id_categoria: null,
-                id_usuario: 1,
+                titulo: "",
+                salario: "",
+                descripcion: "",
+                ubicacion: "",
+                tipoDeContrato: "",
+                id_categoria: "",
+                id_usuario: null,
             },
             num: null,
             selected: null,
+
+
         };
     },
-
+    mounted() {
+        this.usuariols = JSON.parse(localStorage.getItem('usuario'))
+        // this.usuariols = JSON.parse(localStorage.getItem('respuesta'));
+    },
     methods: {
         publicarOferta() {
             // Asignar el valor seleccionado al campo id_categoria en ofertaEmpleo
             this.ofertaEmpleo.id_categoria = this.selected;
             // Realizar una solicitud POST a la API con los datos del formulario
-            axios
-                .post("http://localhost:3000/guardarOfertaEmpleo", this.ofertaEmpleo)
+
+            this.ofertaEmpleo.id_usuario = this.usuariols.id_usuario
+            console.log(this.ofertaEmpleo);
+            axios.post("http://localhost:3000/guardarOfertaEmpleo", this.ofertaEmpleo)
                 .then((response) => {
                     // Manejar la respuesta de la API si es necesario
                     console.log(response.data);
-                    console.log('Oferta Publicada Exitosamente!!!')
+                    alert('Oferta Publicada Exitosamente!!!')
                     // Otros pasos a seguir después de enviar la oferta
                 })
                 .catch(error => {

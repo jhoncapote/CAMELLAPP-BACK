@@ -1,15 +1,16 @@
 <template>
     <div class="container-xg">
-        <div class="container-fluid"><br>
+        
             <h2>Añadir experiencia</h2>
             <b-card>
-                
                 <div class="row">
                     <div class="col-12">
-                       <b-form-file label="subir archivo" class=" mx-12" placeholder="elija el archivo que desea subir"></b-form-file><br>
-                    <hr>
-                <br></div>
-                    
+                        <b-form-file label="subir archivo" class=" mx-12"
+                            placeholder="elija el archivo que desea subir"></b-form-file><br>
+                        <hr>
+                        <br>
+                    </div>
+
                     <div class="col-12">
                         <base-input label="Titulo" v-model="Experiencia.titulo" class="from_control"
                             placeholder="titulo"></base-input>
@@ -33,21 +34,19 @@
                         <base-input label="Experiencia de Trabajo " v-model="Experiencia.experienciaDeTrabajo"
                             class="from_control" placeholder="cuantos años de experiencia tiene"></base-input>
                     </div>
-                    <br>
-                
-                    <div class="col-12 displey flex justify-content-center  mx-2">
-                        <br>
-                        <hr>
-                        <br>
-                        <b-button v-on:click="publicarExperiencia()" href="#" variant="primary" class="m-1"><b-icon
+                </div>
+                <br>
+                <hr>
+                <br>
+                <div class="col-12 d-flex justify-content-center">
+                        <b-button v-on:click="publicarExperiencia()"  variant="primary" class="m-1 col-3"><b-icon
                                 icon="check2"></b-icon>Agregar
                             experiencia</b-button>
-                        <b-button href="#" variant="danger" class="m-1"><b-icon icon="x-circle"></b-icon>
+                        <b-button variant="danger" class="m-1 col-3"><b-icon icon="x-circle"></b-icon>
                             Cancelar</b-button>
                     </div>
-                </div>
             </b-card>
-        </div>
+        
     </div>
 </template>
 <script>
@@ -56,7 +55,7 @@ export default {
     name: 'Experiencia',
     data() {
         return {
-            usuariols:{},
+            usuariols: {},
             Experiencia: {
                 titulo: "",
                 descripcion: "",
@@ -74,14 +73,32 @@ export default {
         this.usuariols = JSON.parse(localStorage.getItem('usuario'))
         // this.usuariols = JSON.parse(localStorage.getItem('respuesta'));
     },
-    
+
     methods: {
         publicarExperiencia() {
             this.Experiencia.id_usuario = this.usuariols.id_usuario
-            axios.post("http://localhost:3000/guardarExperiencia", this.Experiencia)
-                .then((data) => {
-                 console.log(data);
-                });
+            Swal.fire({
+                title: 'Estas seguro',
+                text: "de guardar la experiencia!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, estoy seguro'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    axios.post("http://localhost:3000/guardarExperiencia", this.Experiencia)
+                    Swal.fire(
+                        'Guardar',
+                        'se a guardado la experiencia con exito',
+                        'success',
+                        this.$router.push("/admin/experiencia")
+                    )
+                }
+            }).catch(error => {
+                // Manejar errores si es necesario
+                console.error(error);
+            });
 
         }
     },

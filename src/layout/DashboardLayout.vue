@@ -2,8 +2,8 @@
   <div class="wrapper">
     <side-bar>
       <mobile-menu slot="content"></mobile-menu>
-      
-      <sidebar-link :to="{name:'User', params:{id_usuario}}">
+
+      <sidebar-link :to="{ name: 'User', params: { id_usuario } }">
         <i class="nc-icon nc-circle-09"></i>
         <p>Perfil</p>
       </sidebar-link>
@@ -11,8 +11,7 @@
         <i class="nc-icon nc-grid-45"></i>
         <p>Mis Ofertas</p>
       </sidebar-link>
-      <sidebar-link
-      to="/admin/PublicarOferta">
+      <sidebar-link to="/admin/PublicarOferta">
         <i class="nc-icon nc-tap-01"></i>
         <p>Publicar Oferta</p>
       </sidebar-link>
@@ -40,7 +39,7 @@
         <i class="nc-icon nc-bell-55"></i>
         <p>Editar Experiencia</p>
       </sidebar-link> -->
-      <!-- <sidebar-link to="/admin/LoginView">
+       <!-- <sidebar-link to="/admin/LoginView">
         <i class="nc-icon nc-bell-55"></i>
         <p>login</p>
       </sidebar-link>
@@ -73,20 +72,20 @@ import ContentFooter from './ContentFooter.vue'
 import DashboardContent from './Content.vue'
 import MobileMenu from './MobileMenu.vue'
 export default {
-  data(){
-   return{
-    id_usuario:null,
-   }
+  data() {
+    return {
+      id_usuario: null,
+    }
   },
   components: {
     TopNavbar,
     ContentFooter,
     DashboardContent,
-  MobileMenu
+    MobileMenu
   },
-  mounted(){
-    this.usuariologueado=localStorage.getItem('usuario'),
-    this.id_usuario = this.$route.params.id_usuario
+  mounted() {
+    this.usuariologueado = localStorage.getItem('usuario'),
+      this.id_usuario = this.$route.params.id_usuario
   },
   methods: {
     toggleSidebar() {

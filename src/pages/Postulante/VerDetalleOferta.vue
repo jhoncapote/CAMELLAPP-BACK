@@ -76,6 +76,7 @@ export default {
             window.history.back();
         },
         Aplicaroferta() {
+
             this.postulacion.id_usuario = this.usuariols.id_usuario
             this.postulacion.id_ofertaEmpleo = this.id_ofertaEmpleo
             this.id_usuario = this.usuariols.id_usuario
@@ -86,7 +87,7 @@ export default {
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: '¡postulacion fue correcta!'
+                confirmButtonText: '¡dale click para postularse !'
             }).then((result) => {
                 if (result.isConfirmed) {
                     axios.post("http://localhost:3000/guardarPostulacion/", this.postulacion)

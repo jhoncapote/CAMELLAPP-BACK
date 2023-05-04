@@ -2,30 +2,32 @@
     <div>
         <div class="container">
             <div class="row">
-                <h2 class="m-2">CAMELLAPP</h2>
-                <div class="col">
-                    <div>
-                        <b-input-group><template #append>
-                                <b-button>
-                                    <b-icon icon="search"></b-icon>
-                                </b-button>
-                            </template>
-                            <b-form-input></b-form-input><template #prepend>
-                                <div>
-                                    <b-dropdown>
-                                        <template #button-content>
-                                            <b-icon icon="filter" aria-hidden="true"></b-icon> Filtro
-                                        </template>
-                                        <b-dropdown-item v-for="categoria in listarCategoria" :key="categoria.id"
-                                            :title="categoria.descripcion">{{ categoria.nombre }}</b-dropdown-item>
-                                    </b-dropdown>
-                                </div>
-                            </template>
-                        </b-input-group>
-                    </div>
-                    <br>
-                    <!--aqui termina la barra de busqueda-->
-                </div>
+               
+               <div class="col">
+                   <div>
+                       <b-input-group><template #append>
+                               <b-button>
+                                   <b-icon icon="search"></b-icon>
+                               </b-button>
+                           </template>
+                           <b-form-input></b-form-input><template #prepend>
+                               <div>
+                                   <b-dropdown>
+                                       <template #button-content>
+                                           <b-icon icon="filter" aria-hidden="true"></b-icon> Filtro
+                                       </template>
+                                       <b-dropdown-item v-for="categoria in listarCategoria" :key="categoria.id_categoria">{{ categoria.nombre }}</b-dropdown-item>
+                                   </b-dropdown>
+                               </div>
+                           </template>
+                       </b-input-group>
+                   </div>
+                   <br>
+                   <!--aqui termina la barra de busqueda-->
+               </div>
+           </div>
+            <div class="col-12">
+                <h2>Ofertas de Empleo</h2>
             </div>
 
             <div class="row d-flex justify-content-center">
@@ -44,7 +46,8 @@
                                 <img src="https://www.semana.com/resizer/JmiB52VJxZmk799j7D2CEeTZ1x4=/arc-anglerfish-arc2-prod-semana/public/R52D6MSO7ZB4DF3W4QM4LECYIA.jpg"
                                     alt="">
                                 <b-card-text>{{ ofertaEmpleo.descripcion }}</b-card-text>
-                                <b-button href="VerDetalleOferta" variant="info" class="m-1">Aplicar a esta oferta</b-button>
+                                <b-button href="VerDetalleOferta" variant="info" class="m-1">Aplicar a esta
+                                    oferta</b-button>
                                 <!-- <b-button variant="info" class="m-1"><b-icon icon="pencil"></b-icon> Editar</b-button> -->
                             </div>
                         </router-link>
@@ -63,7 +66,7 @@ export default {
     data() {
         return {
             listaOfertaEmpleo: [],
-            listarCategoria: null,
+            listarCategoria: [],
             id_ofertaEmpleo: null,
             show: 'Ofertas',
             id_categoria: ""
@@ -76,7 +79,11 @@ export default {
         axios.get("http://localhost:3000/listarOfertaEmpleo/").then(response => {
             this.listaOfertaEmpleo = response.data
         });
-       
+        axios.get("http://localhost:3000/listarCategoria/")
+            .then(response => {
+                this.listarCategoria =response.data
+            });  
+
     },
 }
 </script>

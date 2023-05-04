@@ -37,7 +37,9 @@
                 <div>
                     <div class="row  d-flex justify-content-center  ">
                         <router-link class="btn btn-primary  col-3 "
-                            :to="{ name: 'EditarExperiencias', params: { id_experiencia: experiencia.id_experiencia } }">Actualizar</router-link>
+                            :to="{ name: 'EditarExperiencias', params: { id_experiencia: experiencia.id_experiencia } }">Actualizar
+                        </router-link>
+                        
                         <div class="col-5"> <b-button v-on:click="eliminarExperiencia()" variant="danger"
                                 class="mx-1">Eliminar Experiencia</b-button></div>
                     </div>

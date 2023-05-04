@@ -84,13 +84,15 @@
           <br />
           <input class="form-control" v-model="form.username" type="text" placeholder="username" /><br>
           <input class="form-control" v-model="form.fechaNacimiento" type="date" placeholder="fecha de Nacimiento" /><br>
-          <input class="form-control" v-model="form.password" type="password" placeholder="Contraseña" /><br />
-          <input class="form-control" v-model="form.password" type="password" placeholder="Confirma tu Contraseña" />
+          <input class="form-control" id="contraseña" v-model="form.password" type="password"
+            placeholder="Contraseña" /><br />
+          <input class="form-control" id="password" v-model="form.password" type="password"
+            placeholder="Confirma tu Contraseña" />
           <br />
           <div class="d-flex justify-content-evenly">
-            <b-button v-on:click="GuardarUsuario()" variant="info" class="m-1"><b-icon icon="search"></b-icon> Busco
+            <b-button v-on:click="GuardarPostulante()" variant="info" class="m-1"><b-icon icon="search"></b-icon> Busco
               Empleo</b-button>
-            <b-button v-on:click="GuardarUsuario()" variant="info" class="m-1"><b-icon icon="megaphone"></b-icon> Quiero
+            <b-button v-on:click="GuardarEmpleador()" variant="info" class="m-1"><b-icon icon="megaphone"></b-icon> Quiero
               Publicar Un Empleo</b-button><br />
           </div>
         </div>
@@ -104,20 +106,7 @@ export default {
   name: "RegistroView",
   data() {
     return {
-      userCreado:{
-        nombres: "",
-        apellidos: "",
-        nacionalidad: "",
-        ciudad: "",
-        documento: "",
-        fotoPerfil: "url",
-        fechaNacimiento: "",
-        telefono: "",
-        correo: "",
-        direccion: "",
-        username: "",
-        password: ""
-      },
+
       registro: "registro1",
       submited: false,
       form: {
@@ -133,14 +122,23 @@ export default {
         direccion: "",
         username: "",
         password: "",
+        id_rol: 1
       },
     };
   },
   components: {},
   methods: {
 
-    GuardarUsuario(){
-      axios.post(" http://localhost:3000/Registro",this.form)
+    GuardarPostulante() {
+      axios.post(" http://localhost:3000/Registro", this.form)
+        .then((data) => {
+          console.log(data);
+          alert('registro correcto')
+          this.$router.push("/admin/LoginView")
+        });
+    },
+    GuardarEmpleador() {
+      axios.post(" http://localhost:3000/Registro", this.form)
         .then((data) => {
           console.log(data);
           alert('registro correcto')
@@ -148,8 +146,6 @@ export default {
 
         });
     },
-
-
   },
 };
 </script>

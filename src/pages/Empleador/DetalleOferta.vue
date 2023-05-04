@@ -38,18 +38,17 @@
         <hr>
         <h4>Postulados</h4>
 
-        <div v-for="postulaciones in listaPostulantes" :key="postulaciones.id_postulaciones" >
+        <div v-for="postulacion in oferta.postulaciones" :key="postulacion.id_postulaciones" >
             <div  style="width: 100%; height: 30%;">
                 <b-card class=" row">
                     <div class="4">
                         <img src="https://www.semana.com/resizer/JmiB52VJxZmk799j7D2CEeTZ1x4=/arc-anglerfish-arc2-prod-semana/public/R52D6MSO7ZB4DF3W4QM4LECYIA.jpg"
                         style="width: 30%; height: 50%; border-radius: 130%;" alt="">
                     </div>
-                    
                     <div class="col-6 ">
-                        <b-card-text>{{ postulaciones.id_postulaciones }}</b-card-text>
-                        <b-card-text>{{ postulaciones.estado }}</b-card-text>
-                        <b-card-text>{{ postulaciones.fecha }}</b-card-text>
+                        <b-card-text>{{ postulacion.id_postulaciones }}</b-card-text>
+                        <b-card-text>{{ postulacion.estado }}</b-card-text>
+                        <b-card-text>{{ postulacion.fecha }}</b-card-text>
                     </div>
                     <div class=" row">
                         <b-button variant="info" class="mx-1">Contratar</b-button>
@@ -68,8 +67,7 @@ export default {
     name: 'DetalleOfertas',
     data() {
         return {
-            listaPostulantes: [],
-            oferta: {},
+            oferta:{},
             id_ofertaEmpleo: null,
             id_postulaciones: null,
             id_usuario: null,
@@ -79,29 +77,28 @@ export default {
     },
     async mounted() {
         this.id_ofertaEmpleo = this.$route.params.id_ofertaEmpleo
-        await this.DetalleOferta()
-        await this.verPostulantes()
+        await this.verOfertas()
     },
     methods: {
-        DetalleOferta() {
-            axios.get("http://localhost:3000/ofertaEmpleo/" + this.id_ofertaEmpleo)
-                .then((respuesta) => {
-                    // console.log(respuesta.data);
-                    this.oferta = respuesta.data
-                })
-                .catch((err) => {//500
-                    alert("error del servidor")
-                })
-                .finally(() => { })
-        },
+        // DetalleOferta() {
+        //     axios.get("http://localhost:3000/ofertaEmpleo/" + this.id_ofertaEmpleo)
+        //         .then((respuesta) => {
+        //             // console.log(respuesta.data);
+        //             this.oferta = respuesta.data
+        //         })
+        //         .catch((err) => {//500
+        //             alert("error del servidor")
+        //         })
+        //         .finally(() => { })
+        // },
         goBack() {
             window.history.back();
         },
-        verPostulantes() {
+        verOfertas() {
 
             axios.get("http://localhost:3000/consultarpostulanteXoferta/" + this.id_ofertaEmpleo)
                 .then((respuesta) => {
-                    this.listaPostulantes = respuesta.data.postulaciones
+                    this.oferta = respuesta.data
                 })
         },
         eliminar() {

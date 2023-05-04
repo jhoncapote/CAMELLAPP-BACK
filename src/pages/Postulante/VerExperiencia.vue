@@ -1,7 +1,19 @@
 <template>
     <div class="container">
-        <div class="container-fluid">
-            <h2>Experiencia</h2>
+        <div class="container-fluid"><br>
+            <div class="row"><br>
+                <h2 class="col-7 ">Experiencia</h2><br>
+                <div class="col-5 d-flex justify-content-end">
+                    <router-link :to="{ path: '/admin/Experiencia' }" class="d-flex justify-content-center">
+                        <b-card class="btn w-100">
+                            <b-icon icon="plus-circle-dotted"></b-icon>
+                            <b-card-text>Añadir experiencia</b-card-text></b-card>
+                    </router-link>
+
+                </div>
+
+            </div>
+
             <div v-if="show === 'DetalleExperiencia'">
                 <DetalleExperiencia />
             </div>
@@ -38,11 +50,7 @@
                 </div>
             </div>
         </div>
-        <router-link :to="{ path: '/admin/Experiencia' }" class="d-flex justify-content-center">
-            <b-card class="btn w-100">
-                <b-icon icon="plus-circle-dotted"></b-icon>
-                <b-card-text>Añadir experiencia</b-card-text></b-card>
-        </router-link>
+
     </div>
 </template>
 <script>

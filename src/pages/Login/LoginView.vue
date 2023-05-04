@@ -30,18 +30,10 @@ export default {
         correo: "",
         password: "",
       },
-      // respuesta: "",
-      // usuariols: []
     }
   },
   components: {},
-  // created() {
-  //   this.usuariols = JSON.parse(localStorage.getItem('respuesta'));
-  // },
   methods: {
-    // updateProfile() {
-    //   alert("your data:" + JSON.stringify(this.usuario))
-    // },
     iniciarSesion() {
       // alert("a")
       axios.post('http://localhost:3000/Login', this.usuario)
@@ -57,10 +49,6 @@ export default {
             
             localStorage.setItem('usuario', JSON.stringify(res.data.usuarios))
             console.log(res.data);
-            // console.log( this.usuario = JSON.parse(localStorage.getItem('respuesta'))); 
-          //  console.log(localStorage.getItem('respuesta','usuarios.id_usuario')  ); 
-
-            // localStorage.setItem('respuesta',usuarios.id_usuario)
           }
         })
     }

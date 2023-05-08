@@ -1,5 +1,5 @@
 <template>
-    <div>
+
         <div class="container"><br>
             <div class="row">
                 <div class="col">
@@ -15,8 +15,8 @@
                                         <template #button-content>
                                             <b-icon icon="filter" aria-hidden="true"></b-icon> Filtro
                                         </template>
-                                        <b-dropdown-item v-for="categoria in listarCategoria"
-                                            :key="categoria.id_categoria">{{ categoria.nombre }}</b-dropdown-item>
+                                        <!-- <b-dropdown-item v-for="categoria in listarCategoria"
+                                            :key="categoria.id_categoria">{{ categoria.nombre }}</b-dropdown-item> -->
                                     </b-dropdown>
                                 </div>
                             </template>
@@ -45,10 +45,12 @@
 
                     <div v-for="ofertaEmpleo in listaOfertaEmpleo" :key="ofertaEmpleo.id_ofertaEmpleo" class="d-flex w-50">
                         <router-link class="btn border border-0 m-5"
-                            :to="{ name: 'DetalleOfertas', params: { id_ofertaEmpleo: ofertaEmpleo.id_ofertaEmpleo } }">
+                            :to="{ name: 'DetalleOfertas', params: { id_ofertaEmpleo: ofertaEmpleo.id_ofertaEmpleo}}">
+
                             <div img-alt="Image" img-top tag="article" style="max-width: 25rem;"
                                 class="displey-flex card my-0">
-                                <b-card-text> {{ ofertaEmpleo.id_categoria }}</b-card-text>
+                               
+                                <b-card-text> {{ ofertaEmpleo.categorium.nombre }}</b-card-text>
                                 <b-card-text class="d-flex m-2">{{ ofertaEmpleo.id_ofertaEmpleo }}.{{ ofertaEmpleo.titulo
                                 }}</b-card-text>
                                 <img src="https://www.semana.com/resizer/JmiB52VJxZmk799j7D2CEeTZ1x4=/arc-anglerfish-arc2-prod-semana/public/R52D6MSO7ZB4DF3W4QM4LECYIA.jpg"
@@ -64,7 +66,7 @@
                 </div>
             </div>
         </div>
-    </div>
+  
 </template>
 <script>
 import axios from "axios"
@@ -73,10 +75,14 @@ export default {
     name: 'OfertasEmpleo',
     data() {
         return {
-            id_ofertaEmpleo: null,
-            listaOfertaEmpleo: [],
-            listarCategoria: [],
-            id_categoria: null,
+              id_ofertaEmpleo: null,
+            listaOfertaEmpleo: {},
+            // listarCategoria: {},
+            id_categoria:null,
+            id_usuario:null,
+            categoriaXid:{},
+          
+            // Categorias:{},
             show: 'Ofertas'
         }
     },
@@ -84,28 +90,28 @@ export default {
         Card
     },
     async mounted() {
+        this.id_ofertaEmpleo = this.$route.params.id_ofertaEmpleo
         await this.ofertas()
-        // await this.VerCategoria()
+        await this.VerCategoria()
     },
     methods: {
         ofertas() {
             axios.get("http://localhost:3000/listarOfertaEmpleo/")
-                .then(response => {
-                    this.listaOfertaEmpleo = response.data
+                .then(res => {
+                    this.listaOfertaEmpleo = res.data
                 });
-
-            axios.get("http://localhost:3000/listarCategoria/")
-                .then(response => {
-                    this.listarCategoria = response.data
-                });
-
-
+            // axios.get("http://localhost:3000/listarCategoria/")
+            //     .then(res => {
+            //         this.listarCategoria = res.data
+            //     });
         },
         // VerCategoria() {
-        //     axios.get("http://localhost:3000/consultarOfertaXcategoria/" + 4)
+            
+        //     axios.get("http://localhost:3000/consultarOfertaXcategoria/" + this.id_ofertaEmpleo )
         //         .then(responde => {
-        //             this.listarCategoriaid = responde.data.categorium
-        //             console.log(responde);
+                     
+        //             // this.categoriaXid = responde.data
+                
         //         });
         // }
 

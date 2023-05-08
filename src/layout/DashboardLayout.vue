@@ -7,7 +7,7 @@
         <i class="nc-icon nc-circle-09"></i>
         <p>Perfil</p>
       </sidebar-link>
-      <sidebar-link to="/admin/OfertasEmpleo">
+      <sidebar-link  to="/admin/OfertasEmpleo">
         <i class="nc-icon nc-grid-45"></i>
         <p>Mis Ofertas</p>
       </sidebar-link>

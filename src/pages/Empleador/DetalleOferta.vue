@@ -14,7 +14,7 @@
                         <h5 class="d-flex align-items-baseline">Titulo : {{ oferta.titulo }}</h5>
                         <h5 class="d-flex align-items-baseline">Descripcion : {{ oferta.descripcion }}</h5>
                         <h5 class="d-flex align-items-baseline">Direccion : {{ oferta.ubicacion }}</h5>
-                        <h5 class="d-flex align-items-baseline">Salario : ${{ oferta.salario }}</h5>
+                        <h5 class="d-flex align-items-baseline">Salario : $ {{ oferta.salario }}</h5>
                         <h5 class="d-flex align-items-baseline">Duracion: {{ oferta.tipoDeContrato }}</h5>
                     </div>
                     <div class="col-5">
@@ -46,7 +46,7 @@
                         style="width: 30%; height: 50%; border-radius: 130%;" alt="">
                     </div>
                     <div class="col-6 ">
-                        <b-card-text>{{ postulacion.id_postulaciones }}</b-card-text>
+                        <b-card-text>{{ }}</b-card-text>
                         <b-card-text>{{ postulacion.estado }}</b-card-text>
                         <b-card-text>{{ postulacion.fecha }}</b-card-text>
                     </div>

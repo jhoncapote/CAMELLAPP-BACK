@@ -23,6 +23,7 @@
                 </div>
                 <hr>
                 <h4 class="my-4">Postulados</h4>
+                
                 <div>
                     <b-card
                         img-src="https://www.semana.com/resizer/JmiB52VJxZmk799j7D2CEeTZ1x4=/arc-anglerfish-arc2-prod-semana/public/R52D6MSO7ZB4DF3W4QM4LECYIA.jpg"

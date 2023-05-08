@@ -14,6 +14,7 @@ import DetalleUsuario from 'src/pages/DetalleUsuario'
 import DetalleOferta from 'src/pages/Empleador/DetalleOferta.vue'
 import Experiencia from 'src/pages/Postulante/Experiencia.vue'
 import VerExperiencia from 'src/pages/Postulante/VerExperiencia.vue'
+import RegistroEmpleador from 'src/pages/Login/RegistroEmpleador.vue'
 import Registro from 'src/pages/Login/Registro.vue'
 import LoginView from 'src/pages/Login/LoginView.vue'
 import EditarOferta from 'src/pages/Empleador/EditarOferta.vue'
@@ -27,12 +28,12 @@ const routes = [
   {
     path: '/',
     component: DashboardLayout,
-    redirect: '/admin/OfertasEmpleo'
+    redirect: '/admin/LoginView'
   },
   {
     path: '/admin',
     component: DashboardLayout,
-    redirect: '/admin/OfertasEmpleo',
+    redirect: '/admin/LoginView',
     children: [
       {
         path: 'user/:id_usuario',
@@ -103,6 +104,11 @@ const routes = [
         path: 'Registro',
         name: 'Registro',
         component: Registro
+      },
+      {
+        path: 'RegistroEmpleador',
+        name: 'RegistroEmpleador',
+        component: RegistroEmpleador
       },
       {
         path: 'EditarOferta/:id_ofertaEmpleo',

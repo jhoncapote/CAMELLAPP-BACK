@@ -41,8 +41,9 @@ export default {
     data() {
         return {
             usuariols: {},
+            
             oferta: {},
-            id_usuario: null,
+            id_usuario: "",
             id_ofertaEmpleo: null,
 
             postulacion: {
@@ -76,7 +77,6 @@ export default {
             window.history.back();
         },
         Aplicaroferta() {
-
             this.postulacion.id_usuario = this.usuariols.id_usuario
             this.postulacion.id_ofertaEmpleo = this.id_ofertaEmpleo
             this.id_usuario = this.usuariols.id_usuario

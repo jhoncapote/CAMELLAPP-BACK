@@ -39,7 +39,7 @@
           <br>
         </template>
         <b-button v-on:click="editar()" variant="primary" class="m-1 col-5"><b-icon icon="check2"></b-icon>Actualizar</b-button>
-        <b-button href="#" variant="danger" class="m-1 col-5"><b-icon icon="x-circle"></b-icon> Cancelar</b-button>
+        <b-button  variant="danger" class="m-1 col-5"><b-icon icon="x-circle"></b-icon> Cancelar</b-button>
       </b-card>
     </div>
   </div>

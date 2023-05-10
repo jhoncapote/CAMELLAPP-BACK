@@ -38,10 +38,13 @@
                     <!--start card-->
                     <div v-for="ofertaEmpleo in listaOfertaEmpleo" :key="ofertaEmpleo.id_ofertaEmpleo" class="d-flex w-50">
                         <router-link class="btn border border-0 m-5"
-                            :to="{ name: 'VerDetalleOfertas', params: { id_ofertaEmpleo: ofertaEmpleo.id_ofertaEmpleo } }">
+                            :to="{ name: 'VerDetalleOfertas', params: { id_ofertaEmpleo: ofertaEmpleo.id_ofertaEmpleo }}">
+
                             <div :title="ofertaEmpleo.titulo" img-alt="Image" img-top tag="article"
                                 style="max-width: 25rem;" class="card my-0">
+                                <b-card-text>{{ ofertaEmpleo.categorium.nombre }}</b-card-text>
                                 <b-card-text class="d-flex m-2">{{ ofertaEmpleo.id_ofertaEmpleo }}.
+
                                     {{ ofertaEmpleo.titulo }}</b-card-text>
                                 <img src="https://www.semana.com/resizer/JmiB52VJxZmk799j7D2CEeTZ1x4=/arc-anglerfish-arc2-prod-semana/public/R52D6MSO7ZB4DF3W4QM4LECYIA.jpg"
                                     alt="">
@@ -65,18 +68,17 @@ export default {
     name: 'VerDetalleOfertas',
     data() {
         return {
-            listaOfertaEmpleo: [],
-            listarCategoria: [],
+            listaOfertaEmpleo: {},
+            listarCategoria: {},
             id_ofertaEmpleo: null,
             show: 'Ofertas',
-            id_categoria: ""
         }
     },
     components: {
         Card
     },
     mounted() {
-        axios.get("http://localhost:3000/listarOfertaEmpleo/").then(response => {
+        axios.get("http://localhost:3000/consultarofertaXcategoria/").then(response => {
             this.listaOfertaEmpleo = response.data
         });
         axios.get("http://localhost:3000/listarCategoria/")

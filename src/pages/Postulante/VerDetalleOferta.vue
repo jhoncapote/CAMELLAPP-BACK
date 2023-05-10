@@ -16,9 +16,11 @@
                         </div>
                         <hr>
                         <h3 class="d-flex align-items-baseline">
-                            <h3>{{ oferta.id_ofertaEmpleo }}: </h3>Titulo: {{ oferta.titulo }}
+                            
+                            <h3>{{ oferta.id_ofertaEmpleo }}: </h3>{{ oferta.categorium.nombre}}
                         </h3>
                         <hr>
+                        <h4 class="d-flex align-items-baseline">Titulo: {{ oferta.titulo }} </h4>
                         <h4 class="d-flex align-items-baseline">Descripcion : {{ oferta.descripcion }}</h4>
                         <h4 class="d-flex align-items-baseline">Direccion : {{ oferta.ubicacion }}</h4>
                         <h4 class="d-flex align-items-baseline">Salario : ${{ oferta.salario }}</h4>
@@ -41,16 +43,15 @@ export default {
     data() {
         return {
             usuariols: {},
-            
             oferta: {},
             id_usuario: "",
             id_ofertaEmpleo: null,
-
             postulacion: {
                 id_usuario: "",
                 id_ofertaEmpleo: "",
                 estado: "activo",
             },
+           
         }
     },
     created() {
@@ -63,7 +64,7 @@ export default {
     },
     methods: {
         verDetalleOferta() {
-            axios.get("http://localhost:3000/ofertaEmpleo/" + this.id_ofertaEmpleo)
+            axios.get("http://localhost:3000/consultarOfertaXcategoria/" + this.id_ofertaEmpleo)
                 .then((res) => {
                     // console.log(respuesta.data);
                     this.oferta = res.data

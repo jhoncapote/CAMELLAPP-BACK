@@ -15,8 +15,8 @@
                                         <template #button-content>
                                             <b-icon icon="filter" aria-hidden="true"></b-icon> Filtro
                                         </template>
-                                        <!-- <b-dropdown-item v-for="categoria in listarCategoria"
-                                            :key="categoria.id_categoria">{{ categoria.nombre }}</b-dropdown-item> -->
+                                         <b-dropdown-item v-for="categoria in listarCategoria"
+                                            :key="categoria.id_categoria">{{ categoria.nombre }}</b-dropdown-item> 
                                     </b-dropdown>
                                 </div>
                             </template>
@@ -66,7 +66,6 @@
                 </div>
             </div>
         </div>
-  
 </template>
 <script>
 import axios from "axios"
@@ -77,12 +76,9 @@ export default {
         return {
               id_ofertaEmpleo: null,
             listaOfertaEmpleo: {},
-            // listarCategoria: {},
+             listarCategoria: {},
             id_categoria:null,
             id_usuario:null,
-            categoriaXid:{},
-          
-            // Categorias:{},
             show: 'Ofertas'
         }
     },
@@ -92,7 +88,7 @@ export default {
     async mounted() {
         this.id_ofertaEmpleo = this.$route.params.id_ofertaEmpleo
         await this.ofertas()
-        await this.VerCategoria()
+        
     },
     methods: {
         ofertas() {
@@ -100,10 +96,11 @@ export default {
                 .then(res => {
                     this.listaOfertaEmpleo = res.data
                 });
-            // axios.get("http://localhost:3000/listarCategoria/")
-            //     .then(res => {
-            //         this.listarCategoria = res.data
-            //     });
+
+            axios.get("http://localhost:3000/listarCategoria/")
+                .then(res => {
+                    this.listarCategoria = res.data
+                });
         },
         // VerCategoria() {
             

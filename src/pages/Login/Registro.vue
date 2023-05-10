@@ -90,7 +90,8 @@
             placeholder="Confirma tu Contraseña" />
           <br />
           <div class="d-flex justify-content-evenly">
-            <b-button v-on:click="GuardarPostulante()" variant="info" class="m-1"><b-icon icon="search"></b-icon> Busco
+            <b-button v-on:click="GuardarPostulante()" variant="info" class="m-1">
+               Busco
               Empleo</b-button>
             <b-button v-on:click="GuardarEmpleador()" variant="info" class="m-1"><b-icon icon="megaphone"></b-icon> Quiero
               Publicar Un Empleo</b-button><br />
@@ -106,7 +107,6 @@ export default {
   name: "RegistroView",
   data() {
     return {
-
       registro: "registro1",
       submited: false,
       form: {
@@ -135,15 +135,6 @@ export default {
           console.log(data);
           alert('registro correcto')
           this.$router.push("/admin/LoginView")
-        });
-    },
-    GuardarEmpleador() {
-      axios.post(" http://localhost:3000/Registro", this.form)
-        .then((data) => {
-          console.log(data);
-          alert('registro correcto')
-          this.$router.push("/admin/LoginView")
-
         });
     },
   },

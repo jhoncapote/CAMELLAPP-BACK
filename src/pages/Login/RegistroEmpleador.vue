@@ -90,8 +90,6 @@
               placeholder="Confirma tu Contraseña" />
             <br />
             <div class="d-flex justify-content-evenly">
-              <b-button v-on:click="GuardarPostulante()" variant="info" class="m-1"><b-icon icon="search"></b-icon> Busco
-                Empleo</b-button>
               <b-button v-on:click="GuardarEmpleador()" variant="info" class="m-1"><b-icon icon="megaphone"></b-icon> Quiero
                 Publicar Un Empleo</b-button><br />
             </div>
@@ -128,8 +126,6 @@
     },
     components: {},
     methods: {
-  
-     
       GuardarEmpleador() {
         axios.post(" http://localhost:3000/Registro", this.form)
           .then((data) => {

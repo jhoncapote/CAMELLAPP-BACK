@@ -1,67 +1,70 @@
 <template>
-  <div class="content">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
-          <card class="strpied-tabled-with-hover" body-classes="table-full-width table-responsive">
-            <template slot="header">
-              <h4 class="card-title">Striped Table with Hover</h4>
-              <p class="card-category">Here is a subtitle for this table</p>
-            </template>
-            <l-table class="table-hover table-striped" :columns="table1.columns" :data="table1.data">
-            </l-table>
-          </card>
+  <div>
+    <div class="row">
+      <div class="col-8 offset-2">
+        <router-link class="btn btn-info " to="/admin/Registro"> Agregar usuario</router-link>
+      </div>
+      <div class="col-12 ">
+        <h3>USUARIOS</h3>
+        <card class="card-plain">
+          <div class="table-full-width table-responsive">
+            <table class="table table-striped table-hover ">
+              <thead>
+                <tr >
+                  <th scope="col">Id</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Correo_electronico</th>
+                  <th scope="col">Rol</th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr v-for="usuario in listarUsuario" :key=" usuario.id_usuario" >
+                <th scope="row">{{ usuario.id_usuario }}</th>
+                <td>{{ usuario.nombres }}{{ usuario.apellidos }} </td>
+                <td>{{ usuario.correo}}</td>
+                <td>{{usuario.rol.nombreRol }}</td>
+                <td>
+                  <router-link class="btn bg-primary text-white" :to="{name: 'Verusuario', params: {idUsuario: usuario.id_usuario}  }">
+                    <i class="fas fa-eye"></i>
+                  </router-link>
 
-        </div>
+                  <router-link class="btn bg-success text-white" :to="{ name: 'Editarusuario', 
+                  }">
+                    <i class="fas fa-edit"></i>
+                  </router-link>
+                  
+                  <button class="btn  bg-danger text-white" @click="eliminar()">
+                    <i class="fas fa-trash-alt"></i>
+                  </button>
 
-        <div class="col-12">
-          <card class="card-plain">
-            <template slot="header">
-              <h4 class="card-title">Table on Plain Background</h4>
-              <p class="card-category">Here is a subtitle for this table</p>
-            </template>
-            <div class="table-responsive">
-              <l-table class="table-hover" :columns="table2.columns" :data="table2.data">
-              </l-table>
-            </div>
-          </card>
-        </div>
 
-        <div class="col-12">
-          <card class="strpied-tabled-with-hover" body-classes="table-full-width table-responsive">
-            <template slot="header">
-              <h4 class="card-title">Small table</h4>
-              <p class="card-category">Here is a subtitle for this table</p>
-            </template>
-            <l-table class="table-hover table-striped table-sm" :columns="table1.columns" :data="table1.data">
-            </l-table>
-          </card>
+                </td>
+              </tr>
 
-        </div>
+            </tbody>
+            </table>
 
+          </div>
+        </card>
       </div>
     </div>
   </div>
 </template>
 <script>
-import LTable from 'src/components/Table.vue'
-import Card from 'src/components/Cards/Card.vue'
-const tableData = [{}]
+import axios from "axios"
+// import Card from 'src/components/Cards/Card.vue'
 export default {
-  
-  data() {
-    return {
-      table1: {
-        columns: [...tableColumns],
-        data: [...tableData]
-      },
-      
-    }
-  },
-  components: {
-    LTable,
-    Card
-  },
+    name: 'VerDetalleOfertas',
+    data() {
+        return {
+          listarUsuario: {},
+          id_usuario:null
+        }
+    },
+    mounted() {
+        axios.get("http://localhost:3000/consultarUsuarioXrol").then(response => {
+            this.listarUsuario = response.data
+        });
+    },
 }
 </script>
-<style></style>

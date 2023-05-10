@@ -1,11 +1,14 @@
 <template>
-  <div class="wrapper">
-    <side-bar>
+  <div class="wrapper" >
+    <side-bar v-if="usuariols!=null">
       <mobile-menu slot="content"></mobile-menu>
-
-      <sidebar-link :to="{ name: 'User', params: { id_usuario } }">
+      <sidebar-link :to="{ name: 'User', params: {id_usuario } }">
         <i class="nc-icon nc-circle-09"></i>
         <p>Perfil</p>
+      </sidebar-link>
+      <sidebar-link v-if="usuariols.id_rol!=2" to="/admin/Usuarios">
+        <i class="nc-icon nc-circle-09"></i>
+        <p>Gestionar Usuarios</p>
       </sidebar-link>
       <sidebar-link  to="/admin/OfertasEmpleo">
         <i class="nc-icon nc-grid-45"></i>
@@ -16,7 +19,7 @@
         <p>Publicar Oferta</p>
       </sidebar-link>
       <sidebar-link to="/admin/Experiencia">
-        <i class="nc-icon nc-tap-01"></i>
+        <i class="nc-icon nc-simple-add"></i>
         <p>Añadir Experiencia</p>
       </sidebar-link>
       <sidebar-link to="/admin/VerExperiencia">
@@ -32,7 +35,7 @@
         <p>editar oferta</p>
       </sidebar-link> -->
       <sidebar-link to="/admin/VerOferta">
-        <i class="nc-icon nc-pin-3"></i>
+        <i class="nc-icon nc-zoom-split"></i>
         <p>Oferta Disponibles</p>
       </sidebar-link>
       <!-- <sidebar-link to="/admin/EditarExperiencia">
@@ -74,7 +77,7 @@ import MobileMenu from './MobileMenu.vue'
 export default {
   data() {
     return {
-      id_usuario: null,
+      usuariols : null,
     }
   },
   components: {
@@ -84,7 +87,8 @@ export default {
     MobileMenu
   },
   mounted() {
-    this.usuariologueado = localStorage.getItem('usuario'),
+    // this.usuariologueado = localStorage.getItem('usuario'),
+    this.usuariols = JSON.parse(localStorage.getItem('usuario'));
       this.id_usuario = this.$route.params.id_usuario
   },
   methods: {
@@ -95,5 +99,4 @@ export default {
     }
   }
 }
-
 </script>

@@ -9,17 +9,14 @@
         <span class="navbar-toggler-bar burger-lines"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end">
-       
+
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a href="#" class="nav-link " >
-              Inicio
-              <a ><i class=" nc-icon nc-button-power"></i></a>
-            </a>
-            <a href="#" class="nav-link " >
-              cerrar Sesion  
-              <a ><i class=" nc-icon nc-button-power"></i></a>
-            </a>
+            <router-link v-if="usuariols==null" class="nav-link " to="/admin/">REGISTRARTE </router-link>
+            <router-link v-if="usuariols==null" class="nav-link " to="/admin/LoginView">INICIAR SESION </router-link>
+
+            <router-link v-if="usuariols!=null" class="nav-link " to="/admin/OfertasEmpleo"><a><b-icon icon="house-fill"></b-icon></a> INICIO </router-link>
+            <router-link v-if="usuariols!=null" class="nav-link " to="/admin/LoginView"> <a><i class=" nc-icon nc-button-power"></i></a>CERRAR SESION </router-link>
           </li>
         </ul>
       </div>
@@ -36,8 +33,14 @@ export default {
   },
   data() {
     return {
-      activeNotifications: false
+      activeNotifications: false,
+      usuariols : null,
     }
+  },
+  mounted() {
+    // this.usuariologueado = localStorage.getItem('usuario'),
+    this.usuariols = JSON.parse(localStorage.getItem('usuario'));
+      this.id_usuario = this.$route.params.id_usuario
   },
   methods: {
     capitalizeFirstLetter(string) {

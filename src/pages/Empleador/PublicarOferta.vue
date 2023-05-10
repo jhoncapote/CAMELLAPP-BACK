@@ -53,17 +53,15 @@
                 </div>
                 <br>
                 <div class="col-11">
-                    <base-input type="text" label="tipoDeContrato" placeholder="tipoDeContrato"
-                        v-model="ofertaEmpleo.tipoDeContrato"></base-input>
+                    <base-input type="text" label="duracion del trabajo" placeholder="tiempo estimado para el trabajo"
+                        v-model="ofertaEmpleo.duracion"></base-input>
                 </div>
-                
             </template>
             <hr>
             <br>
            <div class="col-12 d-flex justify-content-center">
-            <b-button v-on:click="publicarOferta()" variant="primary" class="m-1 col-3"><b-icon
-                    icon="check2"></b-icon>Publicar Oferta</b-button>
-            <b-button href="#" variant="danger" class="m-1 col-3"><b-icon icon="x-circle"></b-icon> Cancelar</b-button>
+            <b-button v-on:click="publicarOferta()" variant="primary" class="col-3"><b-icon icon="check2"></b-icon>Publicar Oferta</b-button><hr>
+            <router-link to="/admin/ofertasEmpleo" class="btn btn-danger col-3"><b-icon icon="x-circle"></b-icon>Cancelar </router-link>
             </div>
         </b-card>
     </div>
@@ -82,6 +80,7 @@ export default {
                 descripcion: "",
                 celular:"",
                 ubicacion: "",
+                duracion:"",
                 tipoDeContrato: "",
                 id_categoria: "",
                 id_usuario: null,

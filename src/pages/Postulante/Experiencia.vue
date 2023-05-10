@@ -1,56 +1,72 @@
 <template>
     <div class="container-xg">
-        
-            <h2>Añadir experiencia</h2>
-            <b-card>
-                <div class="row">
-                    <div class="col-12">
-                        <b-form-file label="subir archivo" class=" mx-12"
-                            placeholder="elija el archivo que desea subir"></b-form-file><br>
-                        <hr>
-                        <br>
-                    </div>
 
-                    <div class="col-12">
-                        <base-input label="Titulo" v-model="Experiencia.titulo" class="from_control"
-                            placeholder="titulo"></base-input>
-                    </div>
-                    <br><br>
-                    <div class="col-2">
-                        <label for="">Descripcion</label>
-                    </div>
-                    <div class="col-12">
-                        <b-form-textarea v-model="Experiencia.descripcion" placeholder="se permite al menos 500 caracteres"
-                            rows="3">
-                        </b-form-textarea><br>
-                    </div>
+        <h2>Añadir experiencia</h2>
+        <b-card>
+            <div class="row">
+                <div class="col-12">
+                    <b-form-file label="subir archivo" class=" mx-12"
+                        placeholder="elija el archivo que desea subir"></b-form-file><br>
+                    <hr>
                     <br>
-                    <div class="col-12">
-                        <base-input label="Lugar De trabajo" v-model="Experiencia.lugarDeTrabajo" class="from_control"
-                            placeholder="duracion"></base-input><br>
-                    </div>
-                    <br>
-                    <div class="col-12">
-                        <base-input label="Experiencia de Trabajo " v-model="Experiencia.experienciaDeTrabajo"
-                            class="from_control" placeholder="cuantos años de experiencia tiene"></base-input>
-                    </div>
+                </div>
+
+                <div class="col-12">
+                    <base-input label="Titulo" v-model="Experiencia.titulo" type="text"  class="from_control"
+                        placeholder="titulo"></base-input>
+                </div>
+                <br><br>
+                <div class="col-2">
+                    <label for="">Descripcion</label>
+                </div>
+                <div class="col-12">
+                    <b-form-textarea v-model="Experiencia.descripcion" type="text" placeholder="se permite al menos 500 caracteres"
+                        rows="3">
+                    </b-form-textarea><br>
                 </div>
                 <br>
-                <hr>
+                <div class="col-12">
+                    <base-input label="Lugar De trabajo" v-model="Experiencia.lugarDeTrabajo" type="text" class="from_control"
+                        placeholder="duracion"></base-input><br>
+                </div>
                 <br>
-                <div class="col-12 d-flex justify-content-center">
-                        <b-button v-on:click="publicarExperiencia()"  variant="primary" class="m-1 col-3"><b-icon
-                                icon="check2"></b-icon>Agregar
-                            experiencia</b-button>
-                        <b-button variant="danger" class="m-1 col-3"><b-icon icon="x-circle"></b-icon>
-                            Cancelar</b-button>
-                    </div>
-            </b-card>
-        
+                <div class="col-12">
+                    <base-input label="Experiencia de Trabajo " type="text"  v-model="Experiencia.experienciaDeTrabajo"
+                        class="from_control" placeholder="cuantos años de experiencia tiene"></base-input>
+                </div>
+            </div>
+            <h3>referencia de empeador</h3>
+            <div>
+                 <div class="col-12">
+                    <base-input label="Nombre Completo" v-model="Experiencia.nombre" type="text"  class="from_control"
+                        placeholder="digite el nombre completo del empleador"></base-input>
+                </div>
+                <div class="col-12">
+                    <base-input label="Correo Electronico" v-model="Experiencia.correo" type="correo"  class="from_control"
+                        placeholder="digite el correo electronico"></base-input>
+                </div>
+                <div class="col-12">
+                    <base-input label="Numero de Celular" v-model="Experiencia.celular" type="text"  class="from_control"
+                        placeholder="numero de celular"></base-input>
+                </div>
+               
+            </div>
+            <br>
+            <hr>
+            <br>
+            <div class="col-12 d-flex justify-content-center">
+                <b-button v-on:click="publicarExperiencia()" variant="primary" class="m-1 col-3"><b-icon
+                        icon="check2"></b-icon>Agregar
+                    experiencia</b-button>
+                <router-link to="/admin/VerExperiencia" class="btn btn-danger col-3"><b-icon
+                        icon="x-circle"></b-icon>Cancelar </router-link>
+            </div>
+        </b-card>
     </div>
 </template>
 <script>
 import axios from 'axios'
+import Swal from 'sweetalert2'
 export default {
     name: 'Experiencia',
     data() {
@@ -61,6 +77,9 @@ export default {
                 descripcion: "",
                 lugarDeTrabajo: "",
                 experienciaDeTrabajo: "",
+                nombre:"",
+                correo:"",
+                celular:"",
                 id_usuario: null
             }
         }
@@ -92,7 +111,7 @@ export default {
                         'Guardar',
                         'se a guardado la experiencia con exito',
                         'success',
-                        this.$router.push("/admin/experiencia")
+                        this.$router.push("/admin/VerExperiencia")
                     )
                 }
             }).catch(error => {

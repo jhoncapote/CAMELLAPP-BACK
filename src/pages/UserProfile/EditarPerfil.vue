@@ -46,9 +46,10 @@
           <base-input type="text" label="Direccion" placeholder="Direccion" v-model="user.direccion">
           </base-input>
         </div>
-      </div>
-      <div class="text-center">
-        <button type="submit" class="btn btn-info btn-fill float-right" @click="editarPerfil()">Actualizar</button>
+      </div><br>
+      <div class="text-center d-flex justify-content-center ">
+        <button type="submit" class="btn btn-info col-3" @click="editarPerfil()">Actualizar</button>
+        
       </div>
       <div class="clearfix"></div>
     </form>
@@ -67,6 +68,7 @@ export default {
         nombres: "",
         apellidos: "",
         nacionalidad: "",
+        ciudad:"",
         correo: "",
         documento: "",
         fotoPerfil: "url",

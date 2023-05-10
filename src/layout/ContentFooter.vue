@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <footer class="footer">
     <div class="container-fluid">
       <nav>
@@ -22,4 +22,4 @@ export default {}
 
 </script>
 <style>
-</style>
+</style> -->

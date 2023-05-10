@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="col-7">
                         <h3 class="d-flex align-items-baseline">
-                            <h3>{{ oferta.id_ofertaEmpleo }}-</h3>{{ oferta.id_categoria }}
+                            <h3>{{ oferta.id_ofertaEmpleo }}-</h3>{{ categoria.categorium.nombre }}
                         </h3>
                         <h5 class="d-flex align-items-baseline">Titulo : {{ oferta.titulo }}</h5>
                         <h5 class="d-flex align-items-baseline">Descripcion : {{ oferta.descripcion }}</h5>
@@ -38,25 +38,26 @@
         <hr>
         <h4>Postulados</h4>
 
-        <div v-for="postulacion in oferta.postulaciones" :key="postulacion.id_postulaciones" >
-            <div  style="width: 100%; height: 30%;">
-                <b-card class=" row">
-                    <div class="4">
+        <div v-for="postulacion in oferta.postulaciones" :key="postulacion.id_postulaciones">
+           
+                <b-card>
+                    <div class="row">
+                    <div class="col-4">
                         <img src="https://www.semana.com/resizer/JmiB52VJxZmk799j7D2CEeTZ1x4=/arc-anglerfish-arc2-prod-semana/public/R52D6MSO7ZB4DF3W4QM4LECYIA.jpg"
-                        style="width: 30%; height: 50%; border-radius: 130%;" alt="">
+                            style="width: 60%; height: 100%; border-radius: 130%;" alt="">
                     </div>
-                    <div class="col-6 ">
-                        <b-card-text>{{ }}</b-card-text>
+                    <div class="col-6">
                         <b-card-text>{{ postulacion.estado }}</b-card-text>
                         <b-card-text>{{ postulacion.fecha }}</b-card-text>
                     </div>
-                    <div class=" row">
-                        <b-button variant="info" class="mx-1">Contratar</b-button>
-                        <b-button variant="danger" class="mx-1">Eliminar</b-button>
+                    <div class=" col-2">
+                        <b-button variant="info" >Contratar</b-button>
+                        <b-button variant="danger" v-on:click="DeletePostulante()" >Eliminar</b-button>
                     </div>
+                   </div>
 
-                </b-card><br>
-            </div>
+                </b-card>
+            
         </div>
     </div>
 </template>
@@ -67,7 +68,8 @@ export default {
     name: 'DetalleOfertas',
     data() {
         return {
-            oferta:{},
+            oferta: {},
+            categoria:{},
             id_ofertaEmpleo: null,
             id_postulaciones: null,
             id_usuario: null,
@@ -80,17 +82,6 @@ export default {
         await this.verOfertas()
     },
     methods: {
-        // DetalleOferta() {
-        //     axios.get("http://localhost:3000/ofertaEmpleo/" + this.id_ofertaEmpleo)
-        //         .then((respuesta) => {
-        //             // console.log(respuesta.data);
-        //             this.oferta = respuesta.data
-        //         })
-        //         .catch((err) => {//500
-        //             alert("error del servidor")
-        //         })
-        //         .finally(() => { })
-        // },
         goBack() {
             window.history.back();
         },
@@ -100,6 +91,11 @@ export default {
                 .then((respuesta) => {
                     this.oferta = respuesta.data
                 })
+            axios.get("http://localhost:3000/consultarOfertaXcategoria/" + this.id_ofertaEmpleo)
+                .then((respuesta) => {
+                    this.categoria = respuesta.data
+                })
+
         },
         eliminar() {
             const swalWithBootstrapButtons = Swal.mixin({
@@ -137,7 +133,43 @@ export default {
                     )
                 }
             })
+        },
+        DeletePostulante(){
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
+            })
 
+            swalWithBootstrapButtons.fire({
+                title: 'Estas seguro ?',
+                text: "Esto se eliminara definitivo!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Si, estoy seguro!',
+                cancelButtonText: 'No, cancelar!',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    axios.delete("http://localhost:3000/eliminarPostulaciones/" + id_postulaciones)
+                    swalWithBootstrapButtons.fire(
+                        'Eliminado!',
+                        'la postulacion se elimino con exito.',
+                        'success'
+                    )
+                } else if (
+                    /* Read more about handling dismissals below */
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire(
+                        'Cancelado',
+                        'No se eliminara :)',
+                        'error'
+                    )
+                }
+            })
         }
 
     }

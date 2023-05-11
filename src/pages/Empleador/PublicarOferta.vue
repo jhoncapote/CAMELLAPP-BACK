@@ -26,32 +26,30 @@
                         </select>
                     </div>
                 </div>
-                <br>
                 <div class="col-11">
                     <base-input type="text" label="Titulo" placeholder="elija una titulo"
                         v-model="ofertaEmpleo.titulo"></base-input>
                 </div>
-                <br>
+                <div class="col-11">
+                    <base-input type="email" label="Correo Electronico" placeholder="digite el correo electronico"
+                        v-model="ofertaEmpleo.correo"></base-input>
+                </div>
                 <div class="col-11">
                     <label for="">Descripcion</label>
                     <b-form-textarea label="Descripcion" placeholder="Se permite al menos 500 caracteres"
                         v-model="ofertaEmpleo.descripcion"> </b-form-textarea>
                 </div>
-                <br>
                 <div class="col-11">
                     <base-input type="number" label="Numero de celular" placeholder="digite en numero de contacto"
                         v-model="ofertaEmpleo.celular"></base-input>
                 </div>
-                <br>
                 <div class="col-11">
                     <base-input type="number" label="Salario" placeholder="$" v-model="ofertaEmpleo.salario"></base-input>
                 </div>
-                <br>
                 <div class="col-11">
                     <base-input type="text" label="ubicacion" placeholder="digite la ubicacion"
                         v-model="ofertaEmpleo.ubicacion"></base-input>
                 </div>
-                <br>
                 <div class="col-11">
                     <base-input type="text" label="duracion del trabajo" placeholder="tiempo estimado para el trabajo"
                         v-model="ofertaEmpleo.duracion"></base-input>
@@ -61,6 +59,7 @@
             <br>
            <div class="col-12 d-flex justify-content-center">
             <b-button v-on:click="publicarOferta()" variant="primary" class="col-3"><b-icon icon="check2"></b-icon>Publicar Oferta</b-button><hr>
+            
             <router-link to="/admin/ofertasEmpleo" class="btn btn-danger col-3"><b-icon icon="x-circle"></b-icon>Cancelar </router-link>
             </div>
         </b-card>

@@ -12,7 +12,7 @@
 
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <router-link v-if="usuariols==null" class="nav-link " to="/admin/">REGISTRARTE </router-link>
+            <router-link v-if="usuariols==null" class="nav-link " to="/admin/Registro">REGISTRARTE </router-link>
             <router-link v-if="usuariols==null" class="nav-link " to="/admin/LoginView">INICIAR SESION </router-link>
 
             <router-link v-if="usuariols!=null" class="nav-link " to="/admin/OfertasEmpleo"><a><b-icon icon="house-fill"></b-icon></a> INICIO </router-link>

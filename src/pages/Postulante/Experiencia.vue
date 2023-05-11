@@ -35,18 +35,20 @@
                         class="from_control" placeholder="cuantos años de experiencia tiene"></base-input>
                 </div>
             </div>
+            
             <h3>referencia de empeador</h3>
+            <hr>
             <div>
                  <div class="col-12">
                     <base-input label="Nombre Completo" v-model="Experiencia.nombre" type="text"  class="from_control"
                         placeholder="digite el nombre completo del empleador"></base-input>
                 </div>
                 <div class="col-12">
-                    <base-input label="Correo Electronico" v-model="Experiencia.correo" type="correo"  class="from_control"
+                    <base-input label="Correo Electronico" v-model="Experiencia.correo" type="email"  class="from_control"
                         placeholder="digite el correo electronico"></base-input>
                 </div>
                 <div class="col-12">
-                    <base-input label="Numero de Celular" v-model="Experiencia.celular" type="text"  class="from_control"
+                    <base-input label="Numero de Celular" v-model="Experiencia.celular" type="number"  class="from_control"
                         placeholder="numero de celular"></base-input>
                 </div>
                
@@ -55,7 +57,7 @@
             <hr>
             <br>
             <div class="col-12 d-flex justify-content-center">
-                <b-button v-on:click="publicarExperiencia()" variant="primary" class="m-1 col-3"><b-icon
+                <b-button v-on:click="publicarExperiencia()" variant="primary" class="col-3"><b-icon
                         icon="check2"></b-icon>Agregar
                     experiencia</b-button>
                 <router-link to="/admin/VerExperiencia" class="btn btn-danger col-3"><b-icon

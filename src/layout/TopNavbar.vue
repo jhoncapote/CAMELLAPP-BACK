@@ -9,14 +9,14 @@
         <span class="navbar-toggler-bar burger-lines"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end">
-
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <router-link v-if="usuariols==null" class="nav-link " to="/admin/Registro">REGISTRARTE </router-link>
             <router-link v-if="usuariols==null" class="nav-link " to="/admin/LoginView">INICIAR SESION </router-link>
 
-            <router-link v-if="usuariols!=null" class="nav-link " to="/admin/OfertasEmpleo"><a><b-icon icon="house-fill"></b-icon></a> INICIO </router-link>
-            <router-link v-if="usuariols!=null" class="nav-link " to="/admin/LoginView"> <a><i class=" nc-icon nc-button-power"></i></a>CERRAR SESION </router-link>
+            <router-link v-if="usuariols.id_rol!=2" class="nav-link " to="/admin/OfertasEmpleo"><a><b-icon icon="house-fill"></b-icon></a> INICIO </router-link>
+            <router-link v-if="usuariols.id_rol!=1" class="nav-link " to="/admin/OfertasEmpleo"><a><b-icon icon="house-fill"></b-icon></a> INICIO </router-link>
+            <router-link v-if="usuariols!=null" class="nav-link " v-on:click="CerarSesion()" to="/admin/LoginView"> <a><i class=" nc-icon nc-button-power"></i></a>CERRAR SESION </router-link>
           </li>
         </ul>
       </div>
@@ -37,12 +37,16 @@ export default {
       usuariols : null,
     }
   },
-  mounted() {
+  async mounted() {
     // this.usuariologueado = localStorage.getItem('usuario'),
     this.usuariols = JSON.parse(localStorage.getItem('usuario'));
-      this.id_usuario = this.$route.params.id_usuario
-  },
+      this.id_usuario = this.$route.params.id_usuario;
+      await this.CerarSesion();
+      },
   methods: {
+    CerarSesion(){
+      localStorage.clear();
+    },
     capitalizeFirstLetter(string) {
       return string.charAt(0).toUpperCase() + string.slice(1)
     },

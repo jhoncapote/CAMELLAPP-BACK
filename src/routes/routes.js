@@ -132,6 +132,7 @@ const routes = [
       },
       {
         path: 'Detalleexperiencia/:id_experiencia',
+
         name: 'Detalleexperiencia',
 
         component:DetalleExperiencia

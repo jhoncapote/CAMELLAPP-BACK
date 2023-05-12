@@ -23,7 +23,7 @@
                   <th scope="row">{{ usuario.id_usuario }}</th>
                   <td>{{ usuario.nombres }}{{ usuario.apellidos }} </td>
                   <td>{{ usuario.correo }}</td>
-                  <td>{{ usuario.rol.nombreRol }}</td>
+                  <!-- <td>{{ usuario.rol.nombreRol }}</td> -->
                   <td>
                     <!-- <router-link class="btn bg-primary text-white" :to="{name: 'user', params: {id_usuario: usuario.id_usuario}  }">
                     <i class="fas fa-eye"></i>
@@ -33,7 +33,7 @@
                   }">
                     <i class="fas fa-edit"></i>
                   </router-link> -->
-                    <b-button v-on:click="EliminarUsuario()" variant="danger">Eliminar <b-icon
+                    <b-button v-on:click="EliminarUsuario(usuario.id_usuario)" variant="danger">Eliminar <b-icon
                         icon="basket-fill"></b-icon> </b-button>
                   </td>
                 </tr>
@@ -55,7 +55,7 @@ export default {
   data() {
     return {
       listarUsuario: {},
-      // id_usuario: null
+      //  id_usuario: null
       
     }
   },
@@ -68,18 +68,18 @@ export default {
   },
   methods: {
     Verusuarios() {
-      axios.get("http://localhost:3000/consultarUsuarioXrol")
+      axios.get("http://localhost:3000/listarUsuario")
         .then(response => {
           this.listarUsuario = response.data
         });
     },
-    // EliminarUsuario() {
-    //   axios.delete("http://localhost:3000/eliminarUsuario/"+ this.id_usuario)
-    //     .then(res => {
+    EliminarUsuario(id) {
+      axios.delete("http://localhost:3000/eliminarUsuario/"+ id)
+        .then(res => {
           
-    //       console.log(res);
-    //     });
-    // }
+          console.log(res);
+        });
+    }
      
   }
 }

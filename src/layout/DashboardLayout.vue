@@ -10,21 +10,25 @@
         <i class="nc-icon nc-circle-09"></i>
         <p>Gestionar Usuarios</p>
       </sidebar-link>
-      <sidebar-link  to="/admin/OfertasEmpleo">
+      <sidebar-link v-if="usuariols.id_rol!=2" to="/admin/OfertasEmpleo">
         <i class="nc-icon nc-grid-45"></i>
         <p>Mis Ofertas</p>
       </sidebar-link>
-      <sidebar-link to="/admin/PublicarOferta">
+      <sidebar-link v-if="usuariols.id_rol!=2"  to="/admin/PublicarOferta">
         <i class="nc-icon nc-tap-01"></i>
         <p>Publicar Oferta</p>
       </sidebar-link>
-      <sidebar-link to="/admin/Experiencia">
+      <sidebar-link v-if="usuariols.id_rol!=1"  to="/admin/Experiencia">
         <i class="nc-icon nc-simple-add"></i>
         <p>Añadir Experiencia</p>
       </sidebar-link>
-      <sidebar-link to="/admin/VerExperiencia">
+      <sidebar-link v-if="usuariols.id_rol!=1"  to="/admin/VerExperiencia">
         <i class="nc-icon nc-tap-01"></i>
         <p>Mis Experiencias</p>
+      </sidebar-link>
+      <sidebar-link v-if="usuariols.id_rol!=1"  to="/admin/VerOferta">
+        <i class="nc-icon nc-zoom-split"></i>
+        <p>Oferta Disponibles</p>
       </sidebar-link>
       <!-- <sidebar-link to="/admin/icons">
         <i class="nc-icon nc-atom"></i>
@@ -34,10 +38,7 @@
         <i class="nc-icon nc-pin-3"></i>
         <p>editar oferta</p>
       </sidebar-link> -->
-      <sidebar-link to="/admin/VerOferta">
-        <i class="nc-icon nc-zoom-split"></i>
-        <p>Oferta Disponibles</p>
-      </sidebar-link>
+      
       <!-- <sidebar-link to="/admin/EditarExperiencia">
         <i class="nc-icon nc-bell-55"></i>
         <p>Editar Experiencia</p>

@@ -1,7 +1,7 @@
 <template>
     <div class="container-xg">
 
-        <h2>Añadir experiencia</h2>
+        <h3>Añadir Experiencia</h3><br>
         <b-card>
             <div class="row">
                 <div class="col-12">
@@ -15,7 +15,7 @@
                     <base-input label="Titulo" v-model="Experiencia.titulo" type="text"  class="from_control"
                         placeholder="titulo"></base-input>
                 </div>
-                <br><br>
+                <br>
                 <div class="col-2">
                     <label for="">Descripcion</label>
                 </div>
@@ -24,19 +24,17 @@
                         rows="3">
                     </b-form-textarea><br>
                 </div>
-                <br>
                 <div class="col-12">
                     <base-input label="Lugar De trabajo" v-model="Experiencia.lugarDeTrabajo" type="text" class="from_control"
-                        placeholder="duracion"></base-input><br>
+                        placeholder="duracion"></base-input>
                 </div>
-                <br>
                 <div class="col-12">
                     <base-input label="Experiencia de Trabajo " type="text"  v-model="Experiencia.experienciaDeTrabajo"
                         class="from_control" placeholder="cuantos años de experiencia tiene"></base-input>
                 </div>
             </div>
             
-            <h3>referencia de empeador</h3>
+            <h3>Referencia de Empeador</h3>
             <hr>
             <div>
                  <div class="col-12">

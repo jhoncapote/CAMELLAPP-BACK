@@ -5,7 +5,7 @@
                 <b-button @click="goBack"><b-icon icon="arrow-left" class="mx-2"></b-icon> Regresar</b-button>
             </div>
             <div class="col-11">
-                <h2>Detalles</h2><br>
+                <h3>Detalles</h3><br>
                 <div class="row">
                     <div class="col-11">
                         <div class="col-5">

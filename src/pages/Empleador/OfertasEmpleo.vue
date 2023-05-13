@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="row"><br>
-            <h2 class="col-7 ">Mis Ofertas</h2><br>
+            <h3 class="col-7 ">Mis Ofertas</h3><br>
             <div class="col-5 d-flex justify-content-end">
                 <router-link :to="{ path: '/admin/PublicarOferta' }" class="d-flex justify-content-center ">
                     <b-card class="btn w-100">
@@ -57,6 +57,7 @@
 
                             <b-button href="DetalleOferta" variant="info" class="m-1">Ver Oferta</b-button>
                             <br>
+                           
                         </div>
                     </router-link>
                 </div>
@@ -83,9 +84,9 @@ export default {
     components: {
         Card
     },
-    async mounted() {
+     mounted() {
         this.id_ofertaEmpleo = this.$route.params.id_ofertaEmpleo
-        await this.ofertas()
+        this.ofertas();
 
     },
     methods: {
@@ -100,6 +101,7 @@ export default {
                     this.listarCategoria = res.data
                 });
         },
+        
         // VerCategoria() {
 
         //     axios.get("http://localhost:3000/consultarOfertaXcategoria/" + this.id_ofertaEmpleo )

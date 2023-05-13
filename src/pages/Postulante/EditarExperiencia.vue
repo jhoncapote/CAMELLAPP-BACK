@@ -1,8 +1,11 @@
 <template>
     <div class="container lg">
         <div class="container-fluid"><br>
+            <h3>Editar Experiencia</h3><br>
             <b-card>
+
                 <div class="row">
+
                     <b-form-file class=" mx-3" placeholder="elija el archivo que desea subir"></b-form-file><br><br>
                     <div class="col-12">
                         <base-input label="Titulo" v-model="Experiencia.titulo" class="from_control"
@@ -28,13 +31,33 @@
                             class="from_control" placeholder="cuantos años de experiencia tiene"></base-input>
                     </div>
                     <br>
-                    <div class="mx-2">
-                        <b-button v-on:click="editar()" variant="primary" class="m-1"><b-icon
-                                icon="check2"></b-icon>Actualizar experiencia</b-button>
-
+                </div>
+                <h3>Referencia de Empeador</h3>
+                <hr>
+                <div>
+                    <div class="col-12">
+                        <base-input label="Nombre Completo" v-model="Experiencia.nombre" type="text" class="from_control"
+                            placeholder="digite el nombre completo del empleador"></base-input>
                     </div>
+                    <div class="col-12">
+                        <base-input label="Correo Electronico" v-model="Experiencia.correo" type="email"
+                            class="from_control" placeholder="digite el correo electronico"></base-input>
+                    </div>
+                    <div class="col-12">
+                        <base-input label="Numero de Celular" v-model="Experiencia.celular" type="number"
+                            class="from_control" placeholder="numero de celular"></base-input>
+                    </div>
+
                 </div>
             </b-card>
+            <div class="">
+                <b-button v-on:click="editar()" variant="primary" class=" col-3"><b-icon
+                    icon="check2"></b-icon>Actualizar</b-button>
+            <router-link to="/admin/VerExperiencia" class="btn btn-danger col-3"><b-icon icon="x-circle"></b-icon>Cancelar
+            </router-link> 
+            </div>
+
+           
         </div>
     </div>
 </template>
@@ -50,7 +73,10 @@ export default {
                 titulo: "",
                 descripcion: "",
                 lugarDeTrabajo: "",
-                experienciaDeTrabajo: ""
+                experienciaDeTrabajo: "",
+                nombre: "",
+                correo: "",
+                celular: "",
             }
         }
     },

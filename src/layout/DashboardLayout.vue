@@ -6,27 +6,27 @@
         <i class="nc-icon nc-circle-09"></i>
         <p>Perfil</p>
       </sidebar-link>
-      <sidebar-link v-if="usuariols.id_rol!=2" to="/admin/Usuarios" >
+      <sidebar-link v-if="usuariols.id_rol!=1" to="/admin/Usuarios" >
         <i class="nc-icon nc-circle-09"></i>
         <p>Gestionar Usuarios</p>
       </sidebar-link>
-      <sidebar-link v-if="usuariols.id_rol!=2" to="/admin/OfertasEmpleo">
+      <sidebar-link v-if="usuariols.id_rol!=1" to="/admin/OfertasEmpleo">
         <i class="nc-icon nc-grid-45"></i>
         <p>Mis Ofertas</p>
       </sidebar-link>
-      <sidebar-link v-if="usuariols.id_rol!=2"  to="/admin/PublicarOferta">
+      <sidebar-link v-if="usuariols.id_rol!=1"  to="/admin/PublicarOferta">
         <i class="nc-icon nc-tap-01"></i>
         <p>Publicar Oferta</p>
       </sidebar-link>
-      <sidebar-link v-if="usuariols.id_rol!=1"  to="/admin/Experiencia">
+      <sidebar-link v-if="usuariols.id_rol!=2"  to="/admin/Experiencia">
         <i class="nc-icon nc-simple-add"></i>
         <p>Añadir Experiencia</p>
       </sidebar-link>
-      <sidebar-link v-if="usuariols.id_rol!=1"  to="/admin/VerExperiencia">
+      <sidebar-link v-if="usuariols.id_rol!=2"  to="/admin/VerExperiencia">
         <i class="nc-icon nc-tap-01"></i>
         <p>Mis Experiencias</p>
       </sidebar-link>
-      <sidebar-link v-if="usuariols.id_rol!=1"  to="/admin/VerOferta">
+      <sidebar-link v-if="usuariols.id_rol!=2"  to="/admin/VerOferta">
         <i class="nc-icon nc-zoom-split"></i>
         <p>Oferta Disponibles</p>
       </sidebar-link>
@@ -62,7 +62,12 @@
         </sidebar-link>
       </template> -->
     </side-bar>
-    <div class="main-panel">
+    <div class="panel" v-if="usuariols==null">
+      <top-navbar></top-navbar>
+      <dashboard-content @click="toggleSidebar"> </dashboard-content>
+      <content-footer></content-footer>
+    </div>
+    <div class="main-panel" v-if="usuariols!=null">
       <top-navbar></top-navbar>
       <dashboard-content @click="toggleSidebar"> </dashboard-content>
       <content-footer></content-footer>
@@ -101,3 +106,12 @@ export default {
   }
 }
 </script>
+<style>
+ .panel{
+    background: rgba(203,203,210,.15);
+    position: relative;
+    float: right;
+    width: calc(100% - 0px);
+    min-height: 100%;
+}
+</style>

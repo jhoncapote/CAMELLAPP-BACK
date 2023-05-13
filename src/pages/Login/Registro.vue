@@ -6,7 +6,7 @@
 
         <div v-if="registro === 'registro1'">
           <div class="d-flex">
-            <h1 class="mt-5"><strong>Registrate</strong></h1>
+            <h2 class="mt-5"><strong>Registrate</strong></h2>
           </div>
           <div class="d-flex">
             <h5>! Bienvenido ¡</h5>
@@ -41,7 +41,7 @@
         </div>
         <div v-else-if="registro === 'registro2'">
           <div class="d-flex">
-            <h1 class="mt-5"><strong>Registrate</strong></h1>
+            <h2 class="mt-5"><strong>Registrate</strong></h2>
           </div>
           <div class="d-flex">
             <h5>Como podemos encontrarte</h5>
@@ -77,9 +77,6 @@
             <div class="col-6 d-flex justify-content-between">
               <h5>Tu Usuario en Camellapp es:</h5>
             </div>
-            <div class="col-6 d-flex justify-content-between">
-              <h5>User0001</h5>
-            </div>
           </div>
           <br />
           <input class="form-control" v-model="form.username" type="text" placeholder="username" /><br>
@@ -90,11 +87,7 @@
             placeholder="Confirma tu Contraseña" />
           <br />
           <div class="d-flex justify-content-evenly">
-            <b-button v-on:click="GuardarPostulante()" variant="info" class="m-1">
-               Busco
-              Empleo</b-button>
-            <b-button v-on:click="GuardarEmpleador()" variant="info" class="m-1"><b-icon icon="megaphone"></b-icon> Quiero
-              Publicar Un Empleo</b-button><br />
+            <b-button v-on:click="GuardarPostulante()" variant="info" class="m-1">GUARDAR</b-button>
           </div>
         </div>
       </div>

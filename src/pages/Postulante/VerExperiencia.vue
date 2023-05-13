@@ -2,18 +2,14 @@
     <div class="container">
         <div class="container-fluid"><br>
             <div class="row"><br>
-                <h2 class="col-7 ">Experiencia</h2><br>
+                <h3 class="col-7 ">Experiencia</h3><br>
                 <div class="col-5 d-flex justify-content-end">
                     <router-link :to="{ path: '/admin/Experiencia' }" class="d-flex justify-content-center">
                         <b-card class="btn w-100">
-                            <b-icon icon="plus-circle-dotted"></b-icon>
-                            <b-card-text>Añadir experiencia</b-card-text></b-card>
+                            <b-card-text> <b-icon icon="plus-circle-dotted"></b-icon> Añadir experiencia</b-card-text></b-card>
                     </router-link>
-
                 </div>
-
             </div>
-
             <div v-if="show === 'DetalleExperiencia'">
                 <DetalleExperiencia />
             </div>
@@ -22,15 +18,15 @@
                     class="d-flex justify-content-center">
                     <router-link class="btn border border-0 m-5"
                         :to="{ name: 'Detalleexperiencia', params: { id_experiencia: experiencia.id_experiencia } }">
-
                         <b-card no-body class="my-4 overflow-hidden  " style="max-width: 100%; ">
                             <div class="row" no-gutters>
                                 <div class="col-8">
                                     <b-card-body>
                                         <h3>{{ experiencia.titulo }}</h3>
-                                        <h4>Lugar De Trabajo :{{ experiencia.lugarDeTrabajo }} </h4>
-                                        <h4>Descripcion : {{ experiencia.descripcion }} </h4>
-                                        <h4> Experiencia De Trabajo : {{ experiencia.experienciaDeTrabajo }} </h4>
+                                        <hr>
+                                        <h5>Lugar De Trabajo :{{ experiencia.lugarDeTrabajo }} </h5>
+                                        <h5>Descripcion : {{ experiencia.descripcion }} </h5>
+                                        <h5> Experiencia De Trabajo : {{ experiencia.experienciaDeTrabajo }} </h5>
 
                                     </b-card-body><br>
                                     <div class="row  d-flex justify-content-center  ">

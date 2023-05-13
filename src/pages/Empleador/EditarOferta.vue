@@ -2,12 +2,15 @@
   <div class="container-xxl">
     <div class="row">
       <b-card class="">
+
         <template #header>
+          <h3>Editar Oferta</h3><br>
           <div class="col-10 d-flex justify-content-center">
             <img
               src="https://www.semana.com/resizer/JmiB52VJxZmk799j7D2CEeTZ1x4=/arc-anglerfish-arc2-prod-semana/public/R52D6MSO7ZB4DF3W4QM4LECYIA.jpg"
               rounded img-top alt="" class="w-50"><br><br>
           </div>
+          
           <div class="col-11">
             <base-input type="text" label="Categoria" placeholder="elija una categoria"
               v-model="ofertas.id_categoria"></base-input>
@@ -46,7 +49,6 @@
 </template>
 <script>
 import axios from 'axios'
-
 export default {
   name: 'EditarOferta',
   data() {

@@ -5,7 +5,7 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <h2>Detalles</h2><br>
+                <h3>Detalles</h3><br>
                 <div class="row">
                     <div class="col-7">
                         <h3 class="d-flex align-items-baseline">

@@ -24,6 +24,7 @@
                             <option :value="10">Diseño y presupuesto</option>
                             <option :value="11">Otra</option>
                         </select>
+                        
                     </div>
                 </div>
                 <div class="col-11">
@@ -72,6 +73,7 @@ export default {
     name: "PublicarOferta",
     data() {
         return {
+            selected:null,
             usuariols: {},
             ofertaEmpleo: {
                 titulo: "",

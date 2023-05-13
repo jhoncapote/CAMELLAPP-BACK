@@ -14,8 +14,8 @@
             <router-link v-if="usuariols==null" class="nav-link " to="/admin/Registro">REGISTRARTE </router-link>
             <router-link v-if="usuariols==null" class="nav-link " to="/admin/LoginView">INICIAR SESION </router-link>
 
-            <router-link v-if="usuariols.id_rol!=2" class="nav-link " to="/admin/OfertasEmpleo"><a><b-icon icon="house-fill"></b-icon></a> INICIO </router-link>
             <router-link v-if="usuariols.id_rol!=1" class="nav-link " to="/admin/OfertasEmpleo"><a><b-icon icon="house-fill"></b-icon></a> INICIO </router-link>
+            <router-link v-if="usuariols.id_rol!=2" class="nav-link " to="/admin/VerOferta"><a><b-icon icon="house-fill"></b-icon></a> INICIO </router-link>
             <router-link v-if="usuariols!=null" class="nav-link " v-on:click="CerarSesion()" to="/admin/LoginView"> <a><i class=" nc-icon nc-button-power"></i></a>CERRAR SESION </router-link>
           </li>
         </ul>
@@ -40,10 +40,10 @@ export default {
   async mounted() {
     // this.usuariologueado = localStorage.getItem('usuario'),
     this.usuariols = JSON.parse(localStorage.getItem('usuario'));
-      this.id_usuario = this.$route.params.id_usuario;
-      await this.CerarSesion();
+       this.id_usuario = this.$route.params.id_usuario;
       },
   methods: {
+
     CerarSesion(){
       localStorage.clear();
     },

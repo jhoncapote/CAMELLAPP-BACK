@@ -13,7 +13,6 @@
           </base-input>
         </div>
       </div>
-
       <div class="row">
         <div class="col-md-6">
           <base-input type="text" label="Celular" placeholder="Celular" v-model="user.telefono">
@@ -66,12 +65,12 @@ export default {
       user: {
         nombres: "",
         apellidos: "",
+        telefono: "",
         nacionalidad: "",
         ciudad:"",
-        correo: "",
-        documento: "",
+        fechaNacimiento:"",
         fotoPerfil: "url",
-        telefono: "",
+        correo: "",
         direccion: ""
       }
     }
@@ -85,6 +84,7 @@ export default {
   async mounted() {
     this.id_usuario = this.$route.params.id_usuario
     await this.listarDatos()
+    await this.editarPerfil()
   },
   methods:{
     listarDatos(){
@@ -98,7 +98,7 @@ export default {
       })
     },
     editarPerfil(){
-      
+
       alert('aaaa')
       axios.put("http://localhost:3000/editarusuario/"+ this.usuariols.id_usuario,this.user)
       .then(res => {

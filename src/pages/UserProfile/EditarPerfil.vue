@@ -60,7 +60,7 @@ export default {
   name:'User',
   data() {
     return {
-       usuariols: "",
+       usuariols: {},
       id_usuario:null,
       user: {
         nombres: "",
@@ -98,8 +98,7 @@ export default {
       })
     },
     editarPerfil(){
-
-      alert('aaaa')
+      alert('aaa')
       axios.put("http://localhost:3000/editarusuario/"+ this.usuariols.id_usuario,this.user)
       .then(res => {
        console.log(res.data)

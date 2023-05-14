@@ -1,7 +1,7 @@
 <template>
   <div class="content">
     <div class="container-fluid">
-      <div class="">
+      <div>
         <user-card>
           </user-card>
       </div>

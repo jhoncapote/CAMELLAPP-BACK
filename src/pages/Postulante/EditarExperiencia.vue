@@ -81,7 +81,6 @@ export default {
         }
     },
     components: {
-
     },
     async mounted() {
         this.id_experiencia = this.$route.params.id_experiencia
@@ -96,7 +95,6 @@ export default {
                 })
                 .catch((err) => {//500
                     alert("error del servidor")
-
                 })
         },
         editar() {
@@ -108,9 +106,7 @@ export default {
                     alert("problemas del servidor no se actualizo")
 
                 })
-
         },
-
     }
 }
 </script>

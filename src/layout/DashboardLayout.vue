@@ -2,7 +2,7 @@
   <div class="wrapper" >
     <side-bar v-if="usuariols!=null">
       <mobile-menu slot="content"></mobile-menu>
-      <sidebar-link :to="{ name: 'User', params: {id_usuario } }">
+      <sidebar-link :to="{ name: 'Editar', params: {id_usuario } }">
         <i class="nc-icon nc-circle-09"></i>
         <p>Perfil</p>
       </sidebar-link>

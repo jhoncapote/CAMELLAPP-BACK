@@ -134,7 +134,6 @@ export default {
             console.log(data);
             alert('registro correcto')
             this.$router.push("/admin/LoginView")
-
           });
       } else {
         alert("contraseñas no coinciden");

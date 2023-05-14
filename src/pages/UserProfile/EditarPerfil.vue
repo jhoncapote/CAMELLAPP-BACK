@@ -49,7 +49,6 @@
       </div><br>
       <div class="text-center d-flex justify-content-center ">
         <button type="submit" class="btn btn-info col-3" @click="editarPerfil()">Actualizar</button>
-        
       </div>
       <div class="clearfix"></div>
     </form>
@@ -62,7 +61,7 @@ export default {
   name:'User',
   data() {
     return {
-       usuariols: {},
+       usuariols: "",
       id_usuario:null,
       user: {
         nombres: "",
@@ -82,14 +81,12 @@ export default {
   },
   created() {
     this.usuariols = JSON.parse(localStorage.getItem('usuario'));
-    console.log(this.usuariols);
   },
   async mounted() {
     this.id_usuario = this.$route.params.id_usuario
     await this.listarDatos()
   },
   methods:{
-
     listarDatos(){
       this.id_usuario = this.usuariols.id_usuario
       axios.get("http://localhost:3000/verUsuario/"+ this.id_usuario )
@@ -101,7 +98,9 @@ export default {
       })
     },
     editarPerfil(){
-      axios.put("http://localhost:3000/editarusuario/"+ this.id_usuario)
+      
+      alert('aaaa')
+      axios.put("http://localhost:3000/editarusuario/"+ this.usuariols.id_usuario,this.user)
       .then(res => {
        console.log(res.data)
       })

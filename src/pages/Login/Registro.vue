@@ -81,13 +81,13 @@
           <br />
           <input class="form-control" v-model="form.username" type="text" placeholder="username" /><br>
           <input class="form-control" v-model="form.fechaNacimiento" type="date" placeholder="fecha de Nacimiento" /><br>
-          <input class="form-control" id="contraseña" v-model="form.password" type="password"
-            placeholder="Contraseña" /><br />
           <input class="form-control" id="password" v-model="form.password" type="password"
+            placeholder="Contraseña" /><br />
+          <input class="form-control" id="contraseña" v-model="form.contraseña" type="password"
             placeholder="Confirma tu Contraseña" />
           <br />
           <div class="d-flex justify-content-evenly">
-            <b-button v-on:click="GuardarPostulante()" variant="info" class="m-1">GUARDAR</b-button>
+            <b-button v-on:click="GuardarPostulante()" variant="info" class="m-1">GUARDAR REGISTRO</b-button>
           </div>
         </div>
       </div>
@@ -115,20 +115,25 @@ export default {
         direccion: "",
         username: "",
         password: "",
+        contraseña: "",
         id_rol: 1
       },
     };
   },
   components: {},
   methods: {
-
     GuardarPostulante() {
-      axios.post(" http://localhost:3000/Registro", this.form)
-        .then((data) => {
-          console.log(data);
-          alert('registro correcto')
-          this.$router.push("/admin/LoginView")
-        });
+      if (this.form.contraseña == this.form.password) {
+        axios.post(" http://localhost:3000/Registro", this.form)
+          .then((data) => {
+            console.log(data);
+            alert('registro correcto')
+            this.$router.push("/admin/LoginView")
+
+          });
+      } else {
+        alert("contraseñas no coinciden");
+      }
     },
   },
 };

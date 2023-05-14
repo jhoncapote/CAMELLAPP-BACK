@@ -25,7 +25,7 @@ import axios from 'axios'
 export default {
   data() {
     return {
-      usuariols: {}
+      usuariols:{}
     }
   },
   created() {
@@ -33,7 +33,7 @@ export default {
     console.log(this.usuariols);
   },
   async mounted() {
-    await this.listarDatos()
+    // await this.listarDatos()
   },
   components: {
     Card
@@ -49,17 +49,18 @@ export default {
         return 'col-md-3'
       }
     },
-    listarDatos() {
-      axios.get("http://localhost:3000/verUsuario/" + 1)
-        .then((respuesta) => {
-          this.usuario = respuesta.data
-        })
-        .catch((err) => {
-          alert("error del servidor")
-        })
-        .finally(() => {
-        })
-    },
+    // listarDatos() {
+    //   axios.get("http://localhost:3000/verUsuario/"
+    //   )
+    //     .then((respuesta) => {
+    //       this.usuario = respuesta.data
+    //     })
+    //     .catch((err) => {
+    //       alert("error del servidor")
+    //     })
+    //     .finally(() => {
+    //     })
+    // },
   }
 }
 

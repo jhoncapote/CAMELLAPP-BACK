@@ -30,9 +30,9 @@
             <div class="col-5 d-flex justify-content-end">
                 <router-link :to="{ path: '/admin/PublicarOferta' }" class="d-flex justify-content-center ">
                     <b-card class="btn w-100">
-                        <b-icon icon="plus-circle-dotted"></b-icon>
-                        <b-card-text>Añadir Oferta De Empleo</b-card-text></b-card>
+                        <b-card-text> <b-icon icon="plus-circle-dotted"></b-icon>Añadir Oferta De Empleo</b-card-text></b-card>
                 </router-link>
+                
             </div>
         </div>
         <div class="row d-flex justify-content-center">

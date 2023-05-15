@@ -98,7 +98,6 @@ export default {
       })
     },
     editarPerfil(){
-      alert('aaa')
       axios.put("http://localhost:3000/editarusuario/"+ this.usuariols.id_usuario,this.user)
       .then(res => {
        console.log(res.data)

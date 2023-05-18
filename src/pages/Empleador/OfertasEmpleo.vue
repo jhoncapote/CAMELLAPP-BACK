@@ -94,13 +94,18 @@ export default {
             axios.get("http://localhost:3000/listarOfertaEmpleo/")
                 .then(res => {
                     this.listaOfertaEmpleo = res.data
+                   
                 });
 
             axios.get("http://localhost:3000/listarCategoria/")
                 .then(res => {
                     this.listarCategoria = res.data
                 });
+                
         },
+        
+           
+        
         
         // VerCategoria() {
 

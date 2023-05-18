@@ -73,16 +73,8 @@
             <h5>Ya casi terminamos!</h5>
           </div>
           <br />
-          <div class="row">
-            <div class="col-6 d-flex justify-content-between">
-              <h5>Tu Usuario en Camellapp es:</h5>
-            </div>
-            <div class="col-6 d-flex justify-content-between">
-              <h5>User0001</h5>
-            </div>
-          </div>
           <br />
-          <input class="form-control" v-model="form.username" type="text" placeholder="username" /><br>
+          <input class="form-control" v-model="form.username" type="text" placeholder="digite su usuario" /><br>
           <input class="form-control" v-model="form.fechaNacimiento" type="date" placeholder="fecha de Nacimiento" /><br>
           <input class="form-control" id="password" v-model="form.password" type="password"
             placeholder="Contraseña" /><br />

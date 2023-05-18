@@ -14,8 +14,10 @@
                         <h5 class="d-flex align-items-baseline">Titulo : {{ oferta.titulo }}</h5>
                         <h5 class="d-flex align-items-baseline">Descripcion : {{ oferta.descripcion }}</h5>
                         <h5 class="d-flex align-items-baseline">Direccion : {{ oferta.ubicacion }}</h5>
+                        <h5 class="d-flex align-items-baseline">Correo Electronico : {{ oferta.correo }}</h5>
+                        <h5 class="d-flex align-items-baseline">celular : {{ oferta.celular }}</h5>
                         <h5 class="d-flex align-items-baseline">Salario : $ {{ oferta.salario }}</h5>
-                        <h5 class="d-flex align-items-baseline">Duracion: {{ oferta.tipoDeContrato }}</h5>
+                        <h5 class="d-flex align-items-baseline">Duracion: {{ oferta.duracion }}</h5>
                     </div>
                     <div class="col-5">
                         <br>

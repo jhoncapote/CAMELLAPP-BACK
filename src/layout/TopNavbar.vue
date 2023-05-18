@@ -11,15 +11,13 @@
       <div class="collapse navbar-collapse justify-content-end">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <router-link v-if="usuariols == null" class="nav-link " to="/admin/Registro">REGISTRARTE </router-link>
+            <router-link v-if="usuariols == null" class="nav-link " to="/admin/RegistroEmpleador">REGISTRARTE </router-link>
             <router-link v-if="usuariols == null" class="nav-link " to="/admin/LoginView">INICIAR SESION </router-link>
-
-            <router-link v-if="usuariols.id_rol != 1" class="nav-link " to="/admin/OfertasEmpleo"><a><b-icon
-                  icon="house-fill"></b-icon></a> INICIO </router-link>
-            <router-link v-if="usuariols.id_rol != 2" class="nav-link " to="/admin/VerOferta"><a><b-icon
-                  icon="house-fill"></b-icon></a> INICIO </router-link>
+            
+            <!-- <router-link v-if="usuariols.id_rol == 1" class="nav-link " to="/admin/OfertasEmpleo"><a><b-icon icon="house-fill"></b-icon></a> INICIO </router-link> -->
+            <!-- <router-link v-if="usuariols.id_rol!= 2" class="nav-link " to="/admin/VerOferta"><a><b-icon icon="house-fill"></b-icon></a> INICIO </router-link> -->
             <!-- <router-link v-if="usuariols!=null" class="nav-link " v-on:click="CerarSesion()" to="/admin/LoginView"> <a><i class=" nc-icon nc-button-power"></i></a>CERRAR SESION </router-link> -->
-            <b-button v-if="usuariols != null" v-on:click="CerarSesion()" href="LoginView" class="link"><a><i class=" nc-icon nc-button-power"></i></a>CERRAR SESION </b-button>
+            <b-button v-if="usuariols!= null" v-on:click="CerarSesion()"  to="/admin/LoginView" class="link"><a><i class=" nc-icon nc-button-power"></i></a>CERRAR SESION </b-button>
           </li>
         </ul>
       </div>

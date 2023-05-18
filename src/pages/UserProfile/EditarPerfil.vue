@@ -84,7 +84,7 @@ export default {
   async mounted() {
     this.id_usuario = this.$route.params.id_usuario
     await this.listarDatos()
-    await this.editarPerfil()
+    // await this.editarPerfil()
   },
   methods:{
     listarDatos(){

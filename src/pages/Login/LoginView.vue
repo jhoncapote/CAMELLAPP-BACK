@@ -50,15 +50,18 @@ export default {
           if (res.data.status == "error") {
             // alert(res.data.msg)
             console.log(res, data.msg);
+
           } else {
             // console.log(res.data);
             this.$router.push("/admin/OfertasEmpleo")
 
             localStorage.setItem('usuario', JSON.stringify(res.data.usuarios))
             console.log(res.data);
+           
           }
         })
     }
+   
   }
 }
 </script>

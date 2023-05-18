@@ -1,5 +1,5 @@
 <template>
-  <div class="container-xxl">
+  <div class="container-xxl ">
     <div class="row">
       <b-card class="">
 
@@ -21,11 +21,19 @@
           </div>
           <br>
           <div class="col-11">
+                    <base-input type="email" label="Correo Electronico" placeholder="digite el correo electronico"
+                        v-model="ofertas.correo"></base-input>
+                </div>
+          <div class="col-11">
             <label for="">Descripcion</label>
             <b-form-textarea label="Descripcion" placeholder="Se permite al menos 500 caracteres"
               v-model="ofertas.descripcion"> </b-form-textarea>
           </div>
           <br>
+          <div class="col-11">
+                    <base-input type="number" label="Numero de celular" placeholder="digite en numero de contacto"
+                        v-model="ofertas.celular"></base-input>
+                </div>
           <div class="col-11">
             <base-input type="text" label="Salario" placeholder="$" v-model="ofertas.salario"></base-input>
           </div>
@@ -36,8 +44,8 @@
           </div>
           <br>
           <div class="col-11">
-            <base-input type="text" label="tipoDeContrato" placeholder="tipoDeContrato"
-              v-model="ofertas.tipoDeContrato"></base-input>
+            <base-input type="text" label="Duracion del Empleo" placeholder=""
+              v-model="ofertas.duracion"></base-input>
           </div>
           <br>
         </template>
@@ -58,10 +66,12 @@ export default {
         id_ofertaEmpleo: null,
         id_categoria: "",
         titulo: "",
+        correo:"",
+        celular:"",
         descripcion: "",
         salario: "",
         ubicacion: "",
-        tipoDeContrato: "",
+        duracion: "",
         id_usuario: null
       }
     }

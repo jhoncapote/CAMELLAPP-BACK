@@ -16,6 +16,7 @@
                   <th scope="col">Nombre</th>
                   <th scope="col">Correo_electronico</th>
                   <th scope="col">Rol</th>
+                  <th scope="col">opcion</th>
                 </tr>
               </thead>
               <tbody>
@@ -23,7 +24,7 @@
                   <th scope="row">{{ usuario.id_usuario }}</th>
                   <td>{{ usuario.nombres }}{{ usuario.apellidos }} </td>
                   <td>{{ usuario.correo }}</td>
-                  <!-- <td>{{ usuario.rol.nombreRol }}</td> -->
+                  <td>{{ usuario.rol.nombreRol }}</td>
                   <td>
                     <!-- <router-link class="btn bg-primary text-white" :to="{name: 'user', params: {id_usuario: usuario.id_usuario}  }">
                     <i class="fas fa-eye"></i>
@@ -55,7 +56,7 @@ export default {
   data() {
     return {
       listarUsuario: {},
-      //  id_usuario: null
+        id_usuario: null
       
     }
   },
@@ -68,7 +69,7 @@ export default {
   },
   methods: {
     Verusuarios() {
-      axios.get("http://localhost:3000/listarUsuario")
+      axios.get("http://localhost:3000/consultarUsuarioXrol")
         .then(response => {
           this.listarUsuario = response.data
         });

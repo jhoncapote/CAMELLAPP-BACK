@@ -54,7 +54,6 @@
                             <img src="https://www.semana.com/resizer/JmiB52VJxZmk799j7D2CEeTZ1x4=/arc-anglerfish-arc2-prod-semana/public/R52D6MSO7ZB4DF3W4QM4LECYIA.jpg"
                                 alt="">
                             <b-card-text>{{ ofertaEmpleo.descripcion }}</b-card-text>
-
                             <b-button href="DetalleOferta" variant="info" class="m-1">Ver Oferta</b-button>
                             <br>
                            

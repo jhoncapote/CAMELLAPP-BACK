@@ -12,16 +12,31 @@
         </div>
         <br>
         <div class="col-6">
-          <form><br>
-
-            <base-input v-model="usuario.correo" type="email" placeholder="Correo Electronico"></base-input><br>
-            <base-input v-model="usuario.password" type="password" placeholder="Contraseña"></base-input><br>
+          <form @submit.prevent="handleSubmit"><br>
+            <div>
+              <base-input v-model="usuario.correo" id="Correo Electronico" v-validate="'required|email'" type="email"
+                placeholder="Correo Electronico"
+                name="Correo Electronico" :class="{ 'is-invalid': submitted && errors.has('Correo Electronico') }"></base-input>
+              <div v-if="submitted && errors.has('Correo Electronico')" class="invalid-feedback">
+                {{ errors.first("Correo Electronico") }}
+              </div><br>
+            </div>
+            <div>
+              <base-input v-model="usuario.password" type="password" id="contraseña" placeholder="Contraseña"
+                v-validate="{ required: true, min: 8 }" name="contraseña"
+                :class="{ 'is-invalid': submitted && errors.has('contraseña') }"></base-input>
+              <div v-if="submitted && errors.has('contraseña')" class="invalid-feedback">
+                {{ errors.first("contraseña") }}
+              </div><br>
+            </div>
+            <div class="row d-flex justify-content-center">
+              <button class="col-4 btn btn-primary" variant="info" >Iniciar Sesion</button>
+              <!-- <b-button class="col-4" variant="info" v-on:submit.prevent="handleSubmit">Iniciar Sesion</b-button>  -->
+              <!-- <p> <button class="">Register</button></p> -->
+              <router-link class="btn btn-warning  col-4 " to="/admin/RegistroEmpleador">Registrate </router-link>
+            </div><br>
           </form>
-          <div class="row d-flex justify-content-center">
-            <b-button class="col-4" variant="info" v-on:click="iniciarSesion()">Iniciar Sesion</b-button>
 
-            <router-link class="btn btn-warning  col-4 " to="/admin/RegistroEmpleador">Registrate </router-link>
-          </div><br>
           <hr>
           <a href="" class="d-flex justify-content-center">Olvidaste tu contraseña?</a><br>
         </div><br>
@@ -38,6 +53,7 @@ export default {
         correo: "",
         password: "",
       },
+      submitted: false,
     }
   },
   components: {},
@@ -48,31 +64,30 @@ export default {
         .then(res => {
           // console.log(res.data.msg);
           if (res.data.status == "error") {
-            // alert(res.data.msg)
+             alert(res.data.msg)
             console.log(res, data.msg);
-
+            this.$router.push("/admin/LoginView") 
           } else {
             // console.log(res.data);
             this.$router.push("/admin/OfertasEmpleo")
 
             localStorage.setItem('usuario', JSON.stringify(res.data.usuarios))
             console.log(res.data);
-           
+
           }
         })
-    }
-   
+    },
+    handleSubmit() {
+      this.submitted = true;
+      this.$validator.validate().then((valid) => {
+        if (valid) {
+
+          // alert("SUCCESS!! :-)\n\n" + JSON.stringify(this.usuario));
+          this.iniciarSesion()
+
+        }
+      });
+    },
   }
 }
 </script>
-<style>
-/* .pagina{
-     position: absolute;
-    top: 0;
-     left: 0;
-    width: 100%;
-       height: 100%;
-    z-index: 9999;
- } */
-/* $sidebar-width:               calc(100% - 260px) !default; */
-</style>

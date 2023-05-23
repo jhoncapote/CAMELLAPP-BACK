@@ -1,95 +1,93 @@
 <template>
   <div>
-
     <div class="container">
       <div class="container col-8">
-
-        <div v-if="registro === 'registro1'">
-          <div class="d-flex">
-            <h2 class="mt-5"><strong>Registrate</strong></h2>
-          </div>
-          <div class="d-flex">
-            <h5>! Bienvenido ¡</h5>
-          </div>
-          <br />
-
-          <div class="row">
-            <div class="col-6">
-              <input class="form-control" v-model="form.nombres" type="text" placeholder="Nombres" />
-              <div v-if="submited && !$v.form.nombres.required">El campo nombre es obligatorio</div>
-              <div v-if="submited && !$v.from.nombres.minlength"> El nombre debe tener 2 caracteres</div>
+        <form>
+          <div v-if="registro === 'registro1'">
+            <div class="d-flex">
+              <h2 class="mt-5"><strong>Registrate</strong></h2>
             </div>
-            <div class="col-6">
-              <input class="form-control" v-model="form.apellidos" type="text" placeholder="Apellidos" />
+            <div class="d-flex">
+              <h5>! Bienvenido ¡</h5>
             </div>
-          </div>
-          <br />
-          <div class="row">
             <br />
-            <div class="col-6 d-flex justify-content-center">
-              <input class="form-control" v-model="form.telefono" type="number" placeholder="Numero de Celular" /><br />
+            <div class="row">
+              <div class="col-6">
+                <input class="form-control" v-model="form.nombres" type="text" placeholder="Nombres" />
+              </div>
+              <div class="col-6">
+                <input class="form-control" v-model="form.apellidos" type="text" placeholder="Apellidos" />
+              </div>
             </div>
-            <div class="col-6 d-flex justify-content-between">
-              <input class="form-control" v-model="form.correo" type="email" placeholder="Correo" /><br />
+            <br />
+            <div class="row">
+              <br />
+              <div class="col-6 d-flex justify-content-center">
+                <input class="form-control" v-model="form.telefono" type="number" placeholder="Numero de Celular" /><br />
+              </div>
+              <div class="col-6 d-flex justify-content-between">
+                <input class="form-control" v-model="form.correo" type="email" placeholder="Correo" /><br />
+              </div>
+            </div>
+            <br />
+            <input class="form-control" :v-model="form.fotoPerfil" type="file" src="foto"
+              alt="Selecciona una foto de perfil" />
+            <br />
+            <b-button @click="registro = 'registro2'" variant="info">Siguiente</b-button>
+          </div>
+          <div v-else-if="registro === 'registro2'">
+            <div class="d-flex">
+              <h2 class="mt-5"><strong>Registrate</strong></h2>
+            </div>
+            <div class="d-flex">
+              <h5>Como podemos encontrarte</h5>
+            </div>
+            <br />
+            <div class="row">
+              <div class="col-6">
+                <input class="form-control" v-model="form.nacionalidad" type="text" placeholder="Pais de Origen" />
+              </div>
+              <div class="col-6">
+                <input class="form-control" v-model="form.ciudad" type="text" placeholder="ciudad/municipio" />
+              </div>
+            </div>
+            <br />
+            <input class="form-control" v-model="form.direccion" type="text" placeholder="Direccion de Residencia" /> <br>
+            <input class="form-control" v-model="form.documento" type="number" placeholder="Numero de Documento" />
+            <br />
+            <div class="d-flex">
+              <p>Algunos datos no seran visibles por tu seguridad*</p>
+            </div>
+            <br />
+            <b-button @click="registro = 'registro3'" variant="info">Siguiente</b-button>
+          </div>
+          <div v-else-if="registro === 'registro3'">
+            <div class="d-flex">
+              <h1 class="mt-5"><strong>Registrate</strong></h1>
+            </div>
+            <div class="d-flex">
+              <h5>Ya casi terminamos!</h5>
+            </div>
+            <br />
+            <div class="row">
+              <div class="col-6 d-flex justify-content-between">
+                <h5>Tu Usuario en Camellapp es:</h5>
+              </div>
+            </div>
+            <br />
+            <input class="form-control" v-model="form.username" type="text" placeholder="username" /><br>
+            <input class="form-control" v-model="form.fechaNacimiento" type="date"
+              placeholder="fecha de Nacimiento" /><br>
+            <input class="form-control" id="password" v-model="form.password" type="password"
+              placeholder="Contraseña" /><br />
+            <input class="form-control" id="contraseña" v-model="form.contraseña" type="password"
+              placeholder="Confirma tu Contraseña" />
+            <br />
+            <div class="d-flex justify-content-evenly">
+              <b-button v-on:click="GuardarPostulante()" variant="info" class="m-1">GUARDAR REGISTRO</b-button>
             </div>
           </div>
-          <br />
-          <input class="form-control" :v-model="form.fotoPerfil" type="file" src="foto"
-            alt="Selecciona una foto de perfil" />
-          <br />
-          <b-button @click="registro = 'registro2'" variant="info">Siguiente</b-button>
-        </div>
-        <div v-else-if="registro === 'registro2'">
-          <div class="d-flex">
-            <h2 class="mt-5"><strong>Registrate</strong></h2>
-          </div>
-          <div class="d-flex">
-            <h5>Como podemos encontrarte</h5>
-          </div>
-          <br />
-          <div class="row">
-            <div class="col-6">
-              <input class="form-control" v-model="form.nacionalidad" type="text" placeholder="Pais de Origen" />
-            </div>
-            <div class="col-6">
-              <input class="form-control" v-model="form.ciudad" type="text" placeholder="ciudad/municipio" />
-            </div>
-          </div>
-          <br />
-          <input class="form-control" v-model="form.direccion" type="text" placeholder="Direccion de Residencia" /> <br>
-          <input class="form-control" v-model="form.documento" type="number" placeholder="Numero de Documento" />
-          <br />
-          <div class="d-flex">
-            <p>Algunos datos no seran visibles por tu seguridad*</p>
-          </div>
-          <br />
-          <b-button @click="registro = 'registro3'" variant="info">Siguiente</b-button>
-        </div>
-        <div v-else-if="registro === 'registro3'">
-          <div class="d-flex">
-            <h1 class="mt-5"><strong>Registrate</strong></h1>
-          </div>
-          <div class="d-flex">
-            <h5>Ya casi terminamos!</h5>
-          </div>
-          <br />
-          <div class="row">
-            <div class="col-6 d-flex justify-content-between">
-              <h5>Tu Usuario en Camellapp es:</h5>
-            </div>
-          </div>
-          <br />
-          <input class="form-control" v-model="form.username" type="text" placeholder="username" /><br>
-          <input class="form-control" v-model="form.fechaNacimiento" type="date" placeholder="fecha de Nacimiento" /><br>
-          <input class="form-control" id="password" v-model="form.password" type="password"
-            placeholder="Contraseña" /><br />
-          <input class="form-control" id="contraseña" v-model="form.contraseña" type="password"
-            placeholder="Confirma tu Contraseña" />
-          <br />
-          <div class="d-flex justify-content-evenly">
-            <b-button v-on:click="GuardarPostulante()" variant="info" class="m-1">GUARDAR REGISTRO</b-button>
-          </div>
-        </div>
+        </form>
       </div>
     </div>
   </div>

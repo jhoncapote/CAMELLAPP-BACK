@@ -13,6 +13,7 @@
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
  */
+ import VeeValidate from 'vee-validate';
 import Vue from "vue";
 import VueRouter from "vue-router";
 import App from "./App.vue";
@@ -20,11 +21,14 @@ import App from "./App.vue";
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
+
 import 'core-js';
 
 // LightBootstrap plugin
 import LightBootstrap from "./light-bootstrap-main";
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import es from 'vee-validate/dist/locale/es'
+import  { Validator } from "vee-validate";
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -37,7 +41,12 @@ Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(LightBootstrap);
 Vue.use(VueAxios, axios)
+Vue.use(VeeValidate);
+
+Validator.localize("es", es);
 // configure router
+
+
 const router = new VueRouter({
   routes, // short for routes: routes
   linkActiveClass: "nav-item active",

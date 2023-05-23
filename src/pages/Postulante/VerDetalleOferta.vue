@@ -16,7 +16,6 @@
                         </div>
                         <hr>
                         <h3 class="d-flex align-items-baseline">
-                            
                             <h3>{{ oferta.id_ofertaEmpleo }}: </h3>{{ oferta.categorium.nombre}}
                         </h3>
                         <hr>
@@ -50,8 +49,7 @@ export default {
                 id_usuario: "",
                 id_ofertaEmpleo: "",
                 estado: "activo",
-            },
-           
+            },         
         }
     },
     created() {
@@ -74,7 +72,6 @@ export default {
                 })
         },
         goBack() {
-
             window.history.back();
         },
         Aplicaroferta() {

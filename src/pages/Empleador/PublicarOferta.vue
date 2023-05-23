@@ -1,15 +1,13 @@
 <template >
-    <div class="container-fluid ">
+    <div class="container-lg">
         <h3>Publicar Oferta</h3>
-        <b-card class=" d-flex justify-content-center ">
-            <template #header>
-
+        <b-card>
                 <div class="col-10 d-flex justify-content-center">
                     <img src="https://www.semana.com/resizer/JmiB52VJxZmk799j7D2CEeTZ1x4=/arc-anglerfish-arc2-prod-semana/public/R52D6MSO7ZB4DF3W4QM4LECYIA.jpg"
                         rounded img-top alt="" class="w-50"><br><br>
-                </div>
+                </div><br>
                 <div class="row d-flex ">
-                    <div class="col-11">
+                    <div class="col-10">
                         <label for="">Selecciona una categoria</label><br>
                         <select class="btn w-100" v-model="selected">
                             <option :value="1">Ayudante general</option>
@@ -24,45 +22,91 @@
                             <option :value="10">Diseño y presupuesto</option>
                             <option :value="11">Otra</option>
                         </select>
-                        
                     </div>
                 </div>
-                <div class="col-11">
-                    <base-input type="text" label="Titulo" placeholder="elija una titulo"
-                        v-model="ofertaEmpleo.titulo"></base-input>
-                </div>
-                <div class="col-11">
-                    <base-input type="email" label="Correo Electronico" placeholder="digite el correo electronico"
-                        v-model="ofertaEmpleo.correo"></base-input>
-                </div>
-                <div class="col-11">
-                    <label for="">Descripcion</label>
-                    <b-form-textarea label="Descripcion" placeholder="Se permite al menos 500 caracteres"
-                        v-model="ofertaEmpleo.descripcion"> </b-form-textarea>
-                </div>
-                <div class="col-11">
-                    <base-input type="number" label="Numero de celular" placeholder="digite en numero de contacto"
-                        v-model="ofertaEmpleo.celular"></base-input>
-                </div>
-                <div class="col-11">
-                    <base-input type="number" label="Salario" placeholder="$" v-model="ofertaEmpleo.salario"></base-input>
-                </div>
-                <div class="col-11">
-                    <base-input type="text" label="ubicacion" placeholder="digite la ubicacion"
-                        v-model="ofertaEmpleo.ubicacion"></base-input>
-                </div>
-                <div class="col-11">
-                    <base-input type="text" label="duracion del trabajo" placeholder="tiempo estimado para el trabajo"
-                        v-model="ofertaEmpleo.duracion"></base-input>
-                </div>
-            </template>
-            <hr>
-            <br>
-           <div class="col-12 d-flex justify-content-center">
-            <b-button v-on:click="publicarOferta()" variant="primary" class="col-3"><b-icon icon="check2"></b-icon>Publicar Oferta</b-button><hr>
-            
-            <router-link to="/admin/ofertasEmpleo" class="btn btn-danger col-3"><b-icon icon="x-circle"></b-icon>Cancelar </router-link>
-            </div>
+                <form @submit.prevent="handleSubmit">
+                    <div class="col-10">
+                        <base-input type="text" label="Titulo" placeholder="elija una titulo" v-model="ofertaEmpleo.titulo"
+                            v-validate="'required'" id="titulo" name="titulo" :class="{
+                                'is-invalid': submitted && errors.has('titulo'),
+                            }"></base-input>
+                        <div v-if="submitted && errors.has('titulo')" class="invalid-feedback">
+                            {{ errors.first("titulo") }}
+                        </div>
+                    </div>
+                    <div class="col-10">
+                        <base-input type="email" label="Correo Electronico" placeholder="digite el correo electronico"
+                            v-model="ofertaEmpleo.correo" v-validate="'required|email'" name="Correo Electronico"
+                            :class="{ 'is-invalid': submitted && errors.has('Correo Electronico') }"></base-input>
+
+                        <div v-if="submitted && errors.has('Correo Electronico')" class="invalid-feedback">
+                            {{ errors.first("Correo Electronico") }}
+                        </div>
+                    </div>
+                    <div class="col-10">
+                        <label for="">Descripcion</label>
+                        <b-form-textarea label="Descripcion" type="text" placeholder="Se permite maximo 500 caracteres"
+                            v-model="ofertaEmpleo.descripcion" v-validate="{required:true, max:500}" id="descripcion" name="descripcion"
+                            :class="{
+                                'is-invalid': submitted && errors.has('descripcion'),
+                            }"></b-form-textarea>
+                        <div v-if="submitted && errors.has('descripcion')" class="invalid-feedback">
+                            {{ errors.first("descripcion") }}
+                        </div><br>
+                    </div>
+                    <div class="col-10">
+                        <base-input type="text" label="Numero de celular" placeholder="digite en numero de contacto"
+                            v-model="ofertaEmpleo.celular"  v-validate="{required:true, numeric:true, min:10, max:10}" id="Celular" name="Celular"
+                            :class="{
+                                'is-invalid': submitted && errors.has('Celular'),
+                            }"></base-input>
+                        <div v-if="submitted && errors.has('Celular')" class="invalid-feedback">
+                            {{ errors.first("Celular") }}
+                        </div>
+                    </div>
+                    <div class="col-10">
+                        <base-input type="number" label="Salario" placeholder="$"
+                            v-model="ofertaEmpleo.salario" v-validate="'required'" id="Salario" name="Salario"
+                            :class="{
+                                'is-invalid': submitted && errors.has('Salario'),
+                            }"
+                            ></base-input>
+                        <div v-if="submitted && errors.has('Salario')" class="invalid-feedback">
+                            {{ errors.first("Salario") }}
+                        </div>
+
+                    </div>
+                    <div class="col-10">
+                        <base-input type="text" label="ubicacion" placeholder="digite la ubicacion"
+                            v-model="ofertaEmpleo.ubicacion" v-validate="'required'" id="Ubicacion" name="Ubicacion"
+                            :class="{
+                                'is-invalid': submitted && errors.has('Ubicacion'),
+                            }"
+                            ></base-input>
+                        <div v-if="submitted && errors.has('Ubicacion')" class="invalid-feedback">
+                            {{ errors.first("Ubicacion") }}
+                        </div>
+                    </div>
+                    <div class="col-10">
+                        <base-input type="text" label="duracion del trabajo" placeholder="tiempo estimado para el trabajo"
+                            v-model="ofertaEmpleo.duracion" v-validate="'required'" id="Duracion " name="Duracion "
+                            :class="{
+                                'is-invalid': submitted && errors.has('Duracion '),
+                            }"
+                            ></base-input>
+                        <div v-if="submitted && errors.has('Duracion ')" class="invalid-feedback">
+                            {{ errors.first("Duracion ") }}
+                        </div>
+                    </div>
+                    <hr><br>
+                    <div class="col-12 d-flex justify-content-center">
+                        <button variant="primary" class="col-3 btn btn-info"><b-icon icon="check2"></b-icon>Publicar
+                            Oferta</button>
+                        <hr>
+                        <router-link to="/admin/ofertasEmpleo" class="btn btn-danger col-3"><b-icon
+                                icon="x-circle"></b-icon>Cancelar </router-link>
+                    </div>
+                </form>
         </b-card>
     </div>
 </template>
@@ -73,21 +117,23 @@ export default {
     name: "PublicarOferta",
     data() {
         return {
-            selected:null,
+            selected: null,
+            
             usuariols: {},
             ofertaEmpleo: {
                 titulo: "",
                 salario: "",
                 descripcion: "",
-                celular:"",
+                celular: "",
                 ubicacion: "",
-                duracion:"",
+                duracion: "",
                 tipoDeContrato: "",
                 id_categoria: "",
                 id_usuario: null,
             },
             num: null,
             selected: null,
+            submitted: false,
         };
     },
     mounted() {
@@ -119,9 +165,20 @@ export default {
                     )
                 }
             }).catch(error => {
-                    // Manejar errores si es necesario
-                    console.error(error);
-                });
+                // Manejar errores si es necesario
+                console.error(error);
+            });
+        },
+        handleSubmit() {
+            this.submitted = true;
+            this.$validator.validate().then((valid) => {
+                if (valid) {
+
+                    // alert("SUCCESS!! :-)\n\n" + JSON.stringify(this.usuario));
+                    this.publicarOferta()
+
+                }
+            });
         },
     },
 };

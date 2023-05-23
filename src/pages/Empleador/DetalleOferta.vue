@@ -18,6 +18,7 @@
                         <h5 class="d-flex align-items-baseline">celular : {{ oferta.celular }}</h5>
                         <h5 class="d-flex align-items-baseline">Salario : $ {{ oferta.salario }}</h5>
                         <h5 class="d-flex align-items-baseline">Duracion: {{ oferta.duracion }}</h5>
+                        <!-- <h5 class="d-flex align-items-baseline">fdvs: {{ oferta.postulacion.usuario.nombre }}</h5> -->
                     </div>
                     <div class="col-5">
                         <br>
@@ -41,7 +42,6 @@
         <h4>Postulados</h4>
 
         <div v-for="postulacion in oferta.postulaciones" :key="postulacion.id_postulaciones">
-           
                 <b-card>
                     <div class="row">
                     <div class="col-4">
@@ -49,8 +49,10 @@
                             style="width: 60%; height: 100%; border-radius: 130%;" alt="">
                     </div>
                     <div class="col-6">
+                        <b-card-text>{{postulacion.usuario.nombres  }} {{ postulacion.usuario.apellidos }}</b-card-text>
                         <b-card-text>{{ postulacion.estado }}</b-card-text>
                         <b-card-text>{{ postulacion.fecha }}</b-card-text>
+                        
                     </div>
                     <div class=" col-2">
                         <b-button variant="info" >Contratar</b-button>
@@ -72,6 +74,7 @@ export default {
         return {
             oferta: {},
             categoria:{},
+            listarUsuario:{},
             id_ofertaEmpleo: null,
             id_postulaciones: null,
             id_usuario: null,
@@ -97,6 +100,10 @@ export default {
                 .then((respuesta) => {
                     this.categoria = respuesta.data
                 })
+            //  axios.get("http://localhost:3000/consultarusuraioXpostulacion/")
+            //     .then((respuesta) => {
+            //         this.listarUsuario = respuesta.data
+            //     })
 
         },
         eliminar() {

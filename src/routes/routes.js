@@ -3,7 +3,7 @@ import DashboardLayout from '../layout/DashboardLayout.vue'
 import NotFound from '../pages/NotFoundPage.vue'
 // Admin pages
 import UserProfile from 'src/pages/UserProfile.vue'
-// import DetallePerfil from 'src/pages/DetallePerfil.vue'
+
 import Icons from 'src/pages/Icons.vue'
 import Maps from 'src/pages/Maps.vue'
 import Notifications from 'src/pages/Notifications.vue'

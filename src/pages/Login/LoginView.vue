@@ -70,7 +70,7 @@ export default {
           } else {
             // console.log(res.data);
             this.$router.push("/admin/OfertasEmpleo")
-
+            window.location.reload(),
             localStorage.setItem('usuario', JSON.stringify(res.data.usuarios))
             console.log(res.data);
 

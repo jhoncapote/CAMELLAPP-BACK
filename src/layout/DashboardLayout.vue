@@ -6,7 +6,7 @@
         <i class="nc-icon nc-circle-09"></i>
         <p>Perfil</p>
       </sidebar-link>
-      <sidebar-link v-if="usuariols.id_rol!= 1" to="/admin/Usuarios">
+      <sidebar-link v-if="usuariols.id_rol == 3" to="/admin/Usuarios">
         <i class="nc-icon nc-circle-09"></i>
         <p>Gestionar Usuarios</p>
       </sidebar-link>

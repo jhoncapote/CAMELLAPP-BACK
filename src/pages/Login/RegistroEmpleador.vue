@@ -66,7 +66,7 @@
         </div>
         <br />
         <form @submit.prevent="nextPage">
-          <div class="row">
+          <!-- <div class="row">
             <div class="col-6">
               <input class="form-control" v-model="form.nacionalidad" type="text" placeholder="Pais de Origen"
                 id="Nacionalidad" v-validate="'required'" name="Nacionalidad"
@@ -83,7 +83,7 @@
                 {{ errors.first("ciudad") }}
               </div><br>
             </div>
-          </div>
+          </div> -->
           <br />
           <div>
             <input class="form-control" v-model="form.direccion" type="text" placeholder="Direccion de Residencia"
@@ -129,7 +129,7 @@
             </div>
           </div><br>
           <div>
-            <input class="form-control" v-model="form.fechaNacimiento" type="date" v-validate="'required'"
+            <input class="form-control" v-model="form.fechaNacimiento" type="date" v-validate="'required'" 
               placeholder="fecha de Nacimiento" id="Fecha Nacimiento" name="Fecha Nacimiento"
               :class="{ 'is-invalid': submitted && errors.has('Fecha Nacimiento') }" />
             <div v-if="submitted && errors.has('Fecha Nacimiento')" class="invalid-feedback">
@@ -173,8 +173,8 @@ export default {
       form: {
         nombres: "",
         apellidos: "",
-        nacionalidad: "",
-        ciudad: "",
+        nacionalidad: "Colombia",
+        ciudad: "Popayan",
         documento: "",
         fotoPerfil: "url",
         fechaNacimiento: "",
@@ -186,6 +186,7 @@ export default {
         contraseña: "",
         id_rol: 2,
       },
+  
       submitted: false,
     };
   },

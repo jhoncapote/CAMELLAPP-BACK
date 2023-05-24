@@ -101,7 +101,8 @@ export default {
    
       axios.put("http://localhost:3000/editarOfertaEmpleo/" + this.ofertas.id_ofertaEmpleo, this.ofertas)
         .then(response => {
-          
+          console.log(response);
+          this.$router.push("/admin/OfertasEmpleo")
         })
         .catch((err) => {
           alert("problemas del servidor no se actualizo")

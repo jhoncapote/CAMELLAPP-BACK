@@ -3,7 +3,6 @@ import DashboardLayout from '../layout/DashboardLayout.vue'
 import NotFound from '../pages/NotFoundPage.vue'
 // Admin pages
 import UserProfile from 'src/pages/UserProfile.vue'
-
 import Icons from 'src/pages/Icons.vue'
 import Maps from 'src/pages/Maps.vue'
 import Notifications from 'src/pages/Notifications.vue'
@@ -42,7 +41,7 @@ const routes = [
       },
       // {
       //   path: 'Detalleperfil/:id_usuario',
-      //   name: 'Detalleperfil',
+      //   name: 'Detalleperfil', 3143487539
       //   component: DetallePerfil
       // },
       {
@@ -50,6 +49,7 @@ const routes = [
         name: 'Icons',
         component: Icons
       },
+      
       {
         path: 'maps',
         name: 'Maps',

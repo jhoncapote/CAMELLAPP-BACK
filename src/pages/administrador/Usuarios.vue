@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div class="container-fluid"><br>
     <div class="row">
-      <div class="col-8 offset-2">
-        <router-link class="btn btn-info " to="/admin/Registro"><a><b-icon icon="person-plus "></b-icon></a>Agregar
+      <div  class="d-flex">
+        <router-link class="btn btn-info me-md-2" to="/admin/Registro"><a><b-icon icon="person-plus "></b-icon></a>Agregar
           usuario</router-link>
       </div>
       <div class="col-12 ">
-        <h3>USUARIOS</h3>
+        <h4>USUARIOS</h4>
         <card class="card-plain">
           <div class="table-full-width table-responsive">
             <table class="table table-striped table-hover ">

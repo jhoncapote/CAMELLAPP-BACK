@@ -2,20 +2,19 @@
   <div class="container">
     <div class="container col-8">
 
-      <form @submit.prevent="handleSubmit">
-        <div v-if="registro === 'registro1'">
+      <template v-if="currentPage === 1">
+        <form @submit.prevent="nextPage">
           <div class="d-flex">
             <h2 class="mt-5"><strong>Registrate</strong></h2>
-          </div>
+          </div><br>
           <div class="d-flex">
             <h5>! Bienvenido ¡</h5>
           </div>
           <br />
-
           <div class="row">
             <div class="col-6">
-              <input class="form-control" v-model="form.nombres" type="text" id="Nombres" placeholder="Nombres" v-validate="'required'"
-                 name="Nombres" :class="{
+              <input class="form-control" v-model="form.nombres" type="text" id="Nombres" placeholder="Nombres"
+                v-validate="'required'" name="Nombres" :class="{
                   'is-invalid': submitted && errors.has('Nombres'),
                 }" />
               <div v-if="submitted && errors.has('Nombres')" class="invalid-feedback">
@@ -33,10 +32,9 @@
           </div>
           <br />
           <div class="row">
-            
             <div class="col-6 d-flex justify-content-center">
               <input class="form-control" v-model="form.telefono" type="number" placeholder="Numero de Celular"
-              v-validate="{required:true, numeric:true, min:10, max:10}" id="Celular" name="Celular"
+                v-validate="{ required: true, numeric: true, min: 10, max: 10 }" id="Celular" name="Celular"
                 :class="{ 'is-invalid': submitted && errors.has('Celular') }" /><br />
               <div v-if="submitted && errors.has('Celular')" class="invalid-feedback">
                 {{ errors.first("Celular") }}
@@ -55,22 +53,24 @@
           <input class="form-control" :v-model="form.fotoPerfil" type="file" src="foto"
             alt="Selecciona una foto de perfil" />
           <br />
-          <b-button type="submit" @click="registro = 'registro2'" variant="info">Siguiente</b-button>
-          <!-- <input type="submit" value="Submit" @click="registro = 'registro2'" >  -->
+          <button class="btn btn-info col-5" type="submit">Siguiente</button>
+        </form>
+      </template>
+      <template v-else-if="currentPage === 2">
+
+        <div class="d-flex">
+          <h2 class="mt-5"><strong>Registrate</strong></h2>
         </div>
-        <div v-else-if="registro === 'registro2'">
-          <div class="d-flex">
-            <h2 class="mt-5"><strong>Registrate</strong></h2>
-          </div>
-          <div class="d-flex">
-            <h5>Como podemos encontrarte</h5>
-          </div>
-          <br />
+        <div class="d-flex">
+          <h5>Como podemos encontrarte</h5>
+        </div>
+        <br />
+        <form @submit.prevent="nextPage">
           <div class="row">
             <div class="col-6">
               <input class="form-control" v-model="form.nacionalidad" type="text" placeholder="Pais de Origen"
                 id="Nacionalidad" v-validate="'required'" name="Nacionalidad"
-                :class="{ 'is-invalid': submitted && errors.has('Nacionalidad') }" />
+                :class="{ 'is-invalid': submitted && errors.has('Nacionalidad')}" />
               <div v-if="submitted && errors.has('Nacionalidad')" class="invalid-feedback">
                 {{ errors.first("Nacionalidad") }}
               </div><br>
@@ -107,24 +107,27 @@
             <p>Algunos datos no seran visibles por tu seguridad*</p>
           </div>
           <br />
-          <b-button @click="registro = 'registro3'" variant="info">Siguiente</b-button>
+          <button class="btn btn-warning col-5" @click="previousPage">Anterior</button>
+          <button class="btn btn-info col-5" type="submit">Siguiente</button>
+        </form>
+      </template>
+      <template v-else-if="currentPage === 3">
+        <div class="d-flex">
+          <h2 class="mt-5"><strong>Registrate</strong></h2>
         </div>
-        <div v-else-if="registro === 'registro3'">
-          <div class="d-flex">
-            <h2 class="mt-5"><strong>Registrate</strong></h2>
-          </div>
-          <div class="d-flex">
-            <h5>Ya casi terminamos!</h5>
-          </div>
-          <br />
+        <div class="d-flex">
+          <h5>Ya casi terminamos!</h5>
+        </div>
+        <br />
+        <form @submit.prevent="handleSubmit">
           <div>
             <input class="form-control" v-model="form.username" type="text" placeholder="digite su usuario"
-              v-validate="'required'" id="user name" name="user name"
-              :class="{ 'is-invalid': submitted && errors.has('user name') }"/>
-            <div v-if="submitted && errors.has('user name')" class="invalid-feedback">
-              {{ errors.first("user name") }}
-            </div><br>
-          </div>
+              v-validate="'required'" id="Usuario" name="Usuario"
+              :class="{ 'is-invalid': submitted && errors.has('Usuario') }" />
+            <div v-if="submitted && errors.has('Usuario')" class="invalid-feedback">
+              {{ errors.first("Usuario") }}
+            </div>
+          </div><br>
           <div>
             <input class="form-control" v-model="form.fechaNacimiento" type="date" v-validate="'required'"
               placeholder="fecha de Nacimiento" id="Fecha Nacimiento" name="Fecha Nacimiento"
@@ -135,16 +138,16 @@
           </div>
           <div>
             <input class="form-control" id="password" v-model="form.password" type="password" placeholder="Contraseña"
-              v-validate="{ required: true, min:8, max:18 }" name="password"
+              v-validate="{ required: true, min: 8, max: 18 }" name="password"
               :class="{ 'is-invalid': submitted && errors.has('password') }" />
             <div v-if="submitted && errors.has('password')" class="invalid-feedback">
               {{ errors.first("password") }}
             </div><br>
           </div>
-          <br />
+
           <div>
             <input class="form-control" id="contraseña" v-model="form.contraseña" type="password"
-              placeholder="Confirma tu Contraseña" v-validate="{ required: true, min:8, max:18}" name="Contraseña"
+              placeholder="Confirma tu Contraseña" v-validate="{ required: true, min: 8, max: 18 }" name="Contraseña"
               :class="{ 'is-invalid': submitted && errors.has('Contraseña') }" />
             <div v-if="submitted && errors.has('Contraseña')" class="invalid-feedback">
               {{ errors.first("Contraseña") }}
@@ -152,12 +155,11 @@
           </div>
 
           <br />
-          <div class="d-flex justify-content-evenly">
-            <button variant="info" class="m-1"><b-icon icon="megaphone"></b-icon>
-              GUARDAR</button><br />
-          </div>
-        </div>
-      </form>
+          <button class="btn btn-warning col-5 " @click="previousPage">Anterior</button>
+          <button type="submit" class="btn btn-info col-5">Registrarse</button>
+        </form>
+      </template>
+
     </div>
   </div>
 </template>
@@ -167,7 +169,7 @@ export default {
   name: "RegistroView",
   data() {
     return {
-      registro: "registro1",
+      currentPage: 1,
       form: {
         nombres: "",
         apellidos: "",
@@ -191,6 +193,7 @@ export default {
   //   this.handleSubmit()
   // },
   components: {},
+
   methods: {
     GuardarEmpleador() {
       if (this.form.contraseña == this.form.password) {
@@ -202,6 +205,17 @@ export default {
       } else {
         alert("contraseñas no coinciden");
       }
+    },
+    nextPage() {
+      this.submitted = true;
+      this.$validator.validate().then(valid => {
+        if (valid) {
+          this.currentPage++;
+        }
+      });
+    },
+    previousPage() {
+      this.currentPage--;
     },
     handleSubmit() {
       this.submitted = true;

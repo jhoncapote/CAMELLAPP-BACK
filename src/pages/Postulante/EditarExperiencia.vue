@@ -101,6 +101,7 @@ export default {
             axios.put("http://localhost:3000/editarExperiencia/" + this.id_experiencia, this.Experiencia)
                 .then(response => {
                     console.log(response)
+                    this.$router.push("/admin/VerExperiencia")
                 })
                 .catch((err) => {
                     alert("problemas del servidor no se actualizo")

@@ -1,5 +1,5 @@
 <template >
-    <div class="container-lg">
+    <div class="container-fluid">
         <h3>Publicar Oferta</h3>
         <b-card>
                 <div class="col-10 d-flex justify-content-center">
@@ -7,7 +7,7 @@
                         rounded img-top alt="" class="w-50"><br><br>
                 </div><br>
                 <div class="row d-flex ">
-                    <div class="col-10">
+                    <div class="col-12">
                         <label for="">Selecciona una categoria</label><br>
                         <select class="btn w-100" v-model="selected">
                             <option :value="1">Ayudante general</option>
@@ -24,8 +24,8 @@
                         </select>
                     </div>
                 </div>
-                <form @submit.prevent="handleSubmit">
-                    <div class="col-10">
+                <form @submit.prevent="handleSubmit" >
+                    <div class="col-12">
                         <base-input type="text" label="Titulo" placeholder="elija una titulo" v-model="ofertaEmpleo.titulo"
                             v-validate="'required'" id="titulo" name="titulo" :class="{
                                 'is-invalid': submitted && errors.has('titulo'),
@@ -34,7 +34,7 @@
                             {{ errors.first("titulo") }}
                         </div>
                     </div>
-                    <div class="col-10">
+                    <div class="col-12">
                         <base-input type="email" label="Correo Electronico" placeholder="digite el correo electronico"
                             v-model="ofertaEmpleo.correo" v-validate="'required|email'" name="Correo Electronico"
                             :class="{ 'is-invalid': submitted && errors.has('Correo Electronico') }"></base-input>
@@ -43,7 +43,7 @@
                             {{ errors.first("Correo Electronico") }}
                         </div>
                     </div>
-                    <div class="col-10">
+                    <div class="col-12">
                         <label for="">Descripcion</label>
                         <b-form-textarea label="Descripcion" type="text" placeholder="Se permite maximo 500 caracteres"
                             v-model="ofertaEmpleo.descripcion" v-validate="{required:true, max:500}" id="descripcion" name="descripcion"
@@ -54,7 +54,7 @@
                             {{ errors.first("descripcion") }}
                         </div><br>
                     </div>
-                    <div class="col-10">
+                    <div class="col-12">
                         <base-input type="text" label="Numero de celular" placeholder="digite en numero de contacto"
                             v-model="ofertaEmpleo.celular"  v-validate="{required:true, numeric:true, min:10, max:10}" id="Celular" name="Celular"
                             :class="{
@@ -64,7 +64,7 @@
                             {{ errors.first("Celular") }}
                         </div>
                     </div>
-                    <div class="col-10">
+                    <div class="col-12">
                         <base-input type="number" label="Salario" placeholder="$"
                             v-model="ofertaEmpleo.salario" v-validate="'required'" id="Salario" name="Salario"
                             :class="{
@@ -76,7 +76,7 @@
                         </div>
 
                     </div>
-                    <div class="col-10">
+                    <div class="col-12">
                         <base-input type="text" label="ubicacion" placeholder="digite la ubicacion"
                             v-model="ofertaEmpleo.ubicacion" v-validate="'required'" id="Ubicacion" name="Ubicacion"
                             :class="{
@@ -87,7 +87,7 @@
                             {{ errors.first("Ubicacion") }}
                         </div>
                     </div>
-                    <div class="col-10">
+                    <div class="col-12">
                         <base-input type="text" label="duracion del trabajo" placeholder="tiempo estimado para el trabajo"
                             v-model="ofertaEmpleo.duracion" v-validate="'required'" id="Duracion " name="Duracion "
                             :class="{
@@ -173,7 +173,6 @@ export default {
             this.submitted = true;
             this.$validator.validate().then((valid) => {
                 if (valid) {
-
                     // alert("SUCCESS!! :-)\n\n" + JSON.stringify(this.usuario));
                     this.publicarOferta()
 

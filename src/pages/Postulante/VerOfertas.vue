@@ -1,5 +1,5 @@
 <template>
-    <div class="container d-flex justify-content-center ">
+    <div class="container ">
         
         <div class="row">
             <div class="col ">
@@ -32,7 +32,7 @@
             <h3>Ofertas de Empleo</h3>
         </div>
 
-        <div class="row">
+        <div class="row d-flex justify-content-center">
             <div v-if="show === 'VerDetalleOfertas'">
                 <DetalleOferta />
             </div>

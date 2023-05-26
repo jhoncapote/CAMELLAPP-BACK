@@ -32,7 +32,7 @@
                     </div>
                     <br>
                 </div>
-                <h3>Referencia de Empeador</h3>
+                <h3>Referencia de Empleador</h3>
                 <hr>
                 <div>
                     <div class="col-12">

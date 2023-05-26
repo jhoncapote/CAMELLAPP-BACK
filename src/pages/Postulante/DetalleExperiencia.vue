@@ -99,6 +99,7 @@ export default {
                         'Se elimino con exito.',
                         'success'
                     )
+                    this.$router.push("/admin/VerExperiencia")
                 } else if (
                     /* Read more about handling dismissals below */
                     result.dismiss === Swal.DismissReason.cancel

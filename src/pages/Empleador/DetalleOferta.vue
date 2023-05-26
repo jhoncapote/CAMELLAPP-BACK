@@ -42,26 +42,26 @@
         <h4>Postulados</h4>
 
         <div v-for="postulacion in oferta.postulaciones" :key="postulacion.id_postulaciones">
-                <b-card>
-                    <div class="row">
+            <b-card>
+                <div class="row">
                     <div class="col-4">
                         <img src="https://www.semana.com/resizer/JmiB52VJxZmk799j7D2CEeTZ1x4=/arc-anglerfish-arc2-prod-semana/public/R52D6MSO7ZB4DF3W4QM4LECYIA.jpg"
                             style="width: 60%; height: 100%; border-radius: 130%;" alt="">
                     </div>
                     <div class="col-6">
-                        <b-card-text>{{postulacion.usuario.nombres  }} {{ postulacion.usuario.apellidos }}</b-card-text>
+                        <b-card-text>{{ postulacion.usuario.nombres }} {{ postulacion.usuario.apellidos }}</b-card-text>
                         <b-card-text>{{ postulacion.estado }}</b-card-text>
                         <b-card-text>{{ postulacion.fecha }}</b-card-text>
-                        
+
                     </div>
                     <div class=" col-2">
-                        <b-button variant="info" >Contratar</b-button>
-                        <b-button variant="danger" v-on:click="DeletePostulante()" >Eliminar</b-button>
+                        <b-button variant="info">Contratar</b-button>
+                        <b-button variant="danger" v-on:click="DeletePostulante()">Eliminar</b-button>
                     </div>
-                   </div>
+                </div>
 
-                </b-card>
-            
+            </b-card>
+
         </div>
     </div>
 </template>
@@ -73,8 +73,8 @@ export default {
     data() {
         return {
             oferta: {},
-            categoria:{},
-            listarUsuario:{},
+            categoria: {},
+            listarUsuario: {},
             id_ofertaEmpleo: null,
             id_postulaciones: null,
             id_usuario: null,
@@ -131,6 +131,7 @@ export default {
                         'Se elimino con exito.',
                         'success'
                     )
+                    this.$router.push("/admin/OfertasEmpleo")
                 } else if (
                     /* Read more about handling dismissals below */
                     result.dismiss === Swal.DismissReason.cancel
@@ -143,7 +144,7 @@ export default {
                 }
             })
         },
-        DeletePostulante(){
+        DeletePostulante() {
             const swalWithBootstrapButtons = Swal.mixin({
                 customClass: {
                     confirmButton: 'btn btn-success',

@@ -84,7 +84,7 @@ export default {
   async mounted() {
     this.id_usuario = this.$route.params.id_usuario
     await this.listarDatos()
-    // await this.editarPerfil()
+    
   },
   methods:{
     listarDatos(){
@@ -101,6 +101,8 @@ export default {
       axios.put("http://localhost:3000/editarusuario/"+ this.usuariols.id_usuario,this.user)
       .then(res => {
        console.log(res.data)
+       this.$router.push("/admin/user")
+       
       })
     }
   }

@@ -198,7 +198,7 @@ export default {
         axios.post(" http://localhost:3000/Registro", this.form)
           .then((data) => {
             console.log(data);
-            this.$router.push("/admin/LoginView")
+            this.$router.push("/admin/Usuarios")
           });
       } else {
         alert("contraseñas no coinciden");
@@ -220,7 +220,7 @@ export default {
       this.$validator.validate().then((valid) => {
         if (valid) {
           //  alert("SUCCESS!! :-)\n\n" + JSON.stringify(this.form));
-          this.GuardarEmpleador()
+          this.GuardarPostulante()
 
         }
       });
